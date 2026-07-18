@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Candidate Detail — ParseLoom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body id="top">
+
+  <!-- ============ Header ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h10M4 17h13" />
+            <path d="M17 10l3 2-3 2" />
+          </svg>
+        </span>
+        <span class="brand-name">ParseLoom</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="/" class="nav-link active">← Back to results</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div id="candidate-container"><!-- populated by JS --></div>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">PARSELOOM AI</span>
+        <p class="footer-copy">© 2026 ParseLoom AI. Built for recruitment excellence.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <span>InternLoom AI Dev Track</span>
+        <span>Gemini + Groq</span>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // This page is deliberately stateless server-side, same as the rest
+    // of the app -- it reads the exact same JSON /api/run already
+    // returned, out of sessionStorage (set by index.html right after a
+    // successful run), and picks out the one candidate matching ?file=.
+    // Same-origin tabs opened via a plain target="_blank" link (no
+    // rel="noopener") get a clone of the opener's sessionStorage, so no
+    // second network request is needed here.
+    const container = document.getElementById('candidate-container');
+
+    function renderSkillMatchList(matches) {
+      if (!matches || !matches.length) return '<p class="results-empty">None required for this role.</p>';
+      const labels = { exact: 'Matched', synonym: 'Matched (synonym)', partial: 'Partial match', implicit: 'Inferred (implicit)' };
+      return '<ul class="skill-match-list">' + matches.map(m => {
+        const cls = m.match_type || 'none';
+        const label = labels[m.match_type] || 'Not found';
+        return `<li class="skill-match-item skill-match-${cls}"><span class="skill-match-name">${m.skill}</span><span class="skill-match-tag">${label}</span></li>`;
+      }).join('') + '</ul>';
+    }
+
+    function renderNotFound(message) {
+      container.innerHTML = `
+        <section class="hero" style="padding-top:48px;">
+          <h1 class="hero-title">${message}</h1>
+          <p class="hero-sub">Go back to the results page and click "View full details" on a candidate card, or run a new batch.</p>
+        </section>`;
+    }
+
+    function findCandidate(payload, file) {
+      const r = payload.result;
+      const all = [...(r.shortlist || []), ...(r.reserve || [])];
+      return all.find(c => c.file === file) || null;
+    }
+
+    function render(payload, file) {
+      const c = findCandidate(payload, file);
+      const d = (payload.details || {})[file];
+      if (!c || !d) {
+        renderNotFound('Candidate not found in the last run.');
+        return;
+      }
+
+      const skillList = (arr) => (arr && arr.length) ? arr.join(', ') : '—';
+      const projects = (d.projects || []).map(p =>
+        `<li><strong>${p.title || 'Project'}</strong>${p.description ? ' — ' + p.description : ''}</li>`
+      ).join('') || '<li>None listed.</li>';
+      const experience = (d.experience || []).map(e =>
+        `<li><strong>${e.role || 'Role'}</strong>${e.company ? ' at ' + e.company : ''}${e.duration ? ' (' + e.duration + ')' : ''}</li>`
+      ).join('') || '<li>None listed.</li>';
+      const reasons = (c.reasons || []).map(r => `<li>${r}</li>`).join('');
+      const parseNotes = (d.parse_notes || []).map(n => `<li>${n}</li>`).join('') || '<li>None.</li>';
+
+      container.innerHTML = `
+        <section class="hero" style="text-align:left; padding: 48px 0 24px;">
+          <h1 class="hero-title" style="font-size:36px;">${c.name || 'Name not extracted'}</h1>
+          <p class="hero-sub" style="margin:0;">${c.file}${c.rank ? ' · Rank #' + c.rank : ''}</p>
+        </section>
+
+        <section class="card card-wide" style="margin-bottom:24px;">
+          <div class="candidate-badges">
+            <span class="badge badge-${(c.confidence||'').toLowerCase()}">Confidence: ${c.confidence}</span>
+            <span class="badge badge-${(c.parse_quality||'').toLowerCase()}">Parse: ${c.parse_quality}</span>
+            <span class="badge badge-high" style="font-size:14px;">Score: ${c.score ?? '—'}</span>
+          </div>
+          <h4 class="detail-heading">Why this score (top reasons)</h4>
+          <ul class="detail-list">${reasons}</ul>
+        </section>
+
+        <div class="detail-grid">
+          <div class="card">
+            <h4 class="detail-heading">Extracted profile</h4>
+            <p class="detail-row"><span class="detail-label">College</span>${d.college || '—'}</p>
+            <p class="detail-row"><span class="detail-label">Degree / Branch</span>${d.degree_branch || '—'}</p>
+            <p class="detail-row"><span class="detail-label">Graduation year</span>${d.graduation_year || '—'}</p>
+            <p class="detail-row"><span class="detail-label">CGPA</span>${d.cgpa_10pt ?? '—'}${d.cgpa_source_format ? ' (from ' + d.cgpa_source_format + ')' : ''}</p>
+            <p class="detail-row"><span class="detail-label">All skills listed</span>${skillList(d.skills)}</p>
+            <p class="detail-row"><span class="detail-label">Certifications</span>${skillList(d.certifications)}</p>
+            <h4 class="detail-heading">Projects</h4>
+            <ul class="detail-list">${projects}</ul>
+            <h4 class="detail-heading">Experience</h4>
+            <ul class="detail-list">${experience}</ul>
+            <h4 class="detail-heading">Parse notes</h4>
+            <ul class="detail-list">${parseNotes}</ul>
+          </div>
+          <div class="card">
+            <h4 class="detail-heading">Required skills — full breakdown</h4>
+            ${renderSkillMatchList(d.required_skill_matches)}
+            <h4 class="detail-heading">Preferred skills — full breakdown</h4>
+            ${renderSkillMatchList(d.preferred_skill_matches)}
+          </div>
+        </div>`;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get('file');
+    const saved = sessionStorage.getItem('parseloom_last_run');
+
+    if (!file) {
+      renderNotFound('No candidate specified.');
+    } else if (!saved) {
+      renderNotFound('No run data available in this tab.');
+    } else {
+      try {
+        render(JSON.parse(saved), file);
+      } catch (err) {
+        renderNotFound('Could not read the last run\'s data.');
+      }
+    }
+  </script>
+
+</body>
+</html>

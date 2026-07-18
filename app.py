@@ -9,6 +9,7 @@ import logging
 import os
 import tempfile
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict
 
 from flask import Flask, jsonify, render_template, request
@@ -30,6 +31,7 @@ from src.extraction.pdf_reader import extract  # noqa: E402
 from src.extraction.pii_redact import extract_contact_and_redact  # noqa: E402
 from src.matching.scorer import score_candidate  # noqa: E402
 from src.matching.shortlist import build_shortlist  # noqa: E402
+from src.matching.skill_matcher import build_evidence, score_skill_list  # noqa: E402
 from src.models import ParsedResume  # noqa: E402
 
 app = Flask(__name__)
@@ -168,22 +170,73 @@ def api_run():
         # generated per-request temp dir, reject non-.pdf uploads outright.
         job_id = uuid.uuid4().hex
         with tempfile.TemporaryDirectory(prefix=f"parseloom_{job_id}_") as tmp_dir:
-            resumes = []
+            saved_paths = []
             for f in files:
                 if not f.filename.lower().endswith(ALLOWED_EXTENSION):
                     continue  # silently skip non-PDFs, matches main.py's glob("*.pdf") behavior
                 safe_name = secure_filename(f.filename) or f"{uuid.uuid4().hex}.pdf"
                 saved_path = os.path.join(tmp_dir, safe_name)
                 f.save(saved_path)
-                resumes.append(parse_one_resume(saved_path))
+                saved_paths.append(saved_path)
 
-            if not resumes:
+            if not saved_paths:
                 return jsonify({"error": "No valid .pdf files in the upload."}), 400
+
+            # Speed fix (found during live testing -- a 4-resume batch took
+            # noticeably long end to end): each parse_one_resume() call is
+            # dominated by network wait time on one real LLM call, not CPU,
+            # so a small bounded thread pool overlaps those waits instead
+            # of doing them one at a time. max_workers is deliberately
+            # capped at 4, not len(saved_paths) -- an unbounded pool would
+            # fire every request at once and risk bursting past Groq/
+            # Gemini's per-minute rate limit (the exact transient failure
+            # mode already seen once today), trading one problem for a
+            # worse one right before a demo. ThreadPoolExecutor.map()
+            # preserves input order, so results still line up 1:1 with
+            # saved_paths regardless of which finishes first.
+            with ThreadPoolExecutor(max_workers=min(4, len(saved_paths))) as pool:
+                resumes = list(pool.map(parse_one_resume, saved_paths))
 
             results = [score_candidate(r, jd) for r in resumes]
             shortlist_data = build_shortlist(results, jd)
 
-        return jsonify({"jd": jd.role, "result": shortlist_data})
+            # Full per-candidate detail for the web UI's expand-on-click
+            # view -- deliberately NOT part of shortlist.py/build_shortlist,
+            # which is the CLI's canonical, already-documented output
+            # shape. This is web-only, additive, recomputed here (no
+            # extra LLM calls -- skill matching is a local vocab/text
+            # pass, same functions scorer.py already calls internally).
+            details = {}
+            for r in resumes:
+                if r.parse_status == "Failed":
+                    continue
+                vocab_hits, evidence_text = build_evidence(
+                    r.raw_text,
+                    {
+                        "skills": r.skills,
+                        "projects": r.projects,
+                        "experience": r.experience,
+                        "certifications": r.certifications,
+                    },
+                )
+                _, required_matches = score_skill_list(jd.required_skills, vocab_hits, evidence_text)
+                _, preferred_matches = score_skill_list(jd.preferred_skills, vocab_hits, evidence_text)
+                details[r.file_name] = {
+                    "college": r.college,
+                    "degree_branch": r.degree_branch,
+                    "graduation_year": r.graduation_year,
+                    "cgpa_10pt": r.cgpa_10pt,
+                    "cgpa_source_format": r.cgpa_source_format,
+                    "skills": r.skills,
+                    "projects": r.projects,
+                    "experience": r.experience,
+                    "certifications": r.certifications,
+                    "required_skill_matches": required_matches,
+                    "preferred_skill_matches": preferred_matches,
+                    "parse_notes": r.parse_notes,
+                }
+
+        return jsonify({"jd": jd.role, "result": shortlist_data, "details": details})
 
     except Exception:  # noqa: BLE001
         # Security/robustness fix: without this, an unexpected bug
@@ -201,6 +254,21 @@ def results_page():
     return render_template("results.html")
 
 
+@app.route("/candidate")
+def candidate_page():
+    # Deliberately stateless, like every other route here: no server-side
+    # session or database to look candidates up by ID. The browser already
+    # has the full /api/run response in memory right after a run -- this
+    # page's JS reads that same data back out of sessionStorage (set at
+    # render time, see index.html) and picks out the one candidate whose
+    # filename matches the ?file= query param. Replaces the earlier
+    # in-card expand panel, which broke on real data: nesting a 2-column
+    # skill breakdown inside an already-narrow card caused real horizontal
+    # overflow, cutting text off mid-word. A dedicated page gets the full
+    # viewport to lay out in, so that class of bug can't recur here.
+    return render_template("candidate.html")
+
+
 if __name__ == "__main__":
     # Security fix: debug=True enables Werkzeug's interactive debugger,
     # which renders full stack tracebacks (and, if ever reached, a
@@ -209,4 +277,14 @@ if __name__ == "__main__":
     # on a hackathon venue's shared network. debug=False here;
     # TEMPLATES_AUTO_RELOAD above keeps template edits picking up live
     # without needing debug mode for it.
-    app.run(debug=False, port=5000)
+    #
+    # use_reloader=True is independent of debug -- it restarts the
+    # Python process automatically when app.py (or anything under src/)
+    # changes, WITHOUT turning on the interactive debugger above. This
+    # closes a real gap found during testing: templates hot-reload on
+    # browser refresh, but app.py's route code does not, and a stale
+    # running process silently serves old backend logic with no error
+    # -- exactly what happened once already today. Auto-reloading
+    # removes "did you restart the server" as a manual step to remember
+    # mid-demo.
+    app.run(debug=False, use_reloader=True, port=5000)

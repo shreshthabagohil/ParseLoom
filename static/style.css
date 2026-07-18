@@ -284,9 +284,14 @@ body {
 }
 
 .dropzone:hover,
-.dropzone:focus-within {
+.dropzone:focus-within,
+.dropzone.dropzone-active {
   border-color: var(--primary);
   box-shadow: 0 0 48px rgba(192, 138, 92, 0.12) inset;
+}
+
+.dropzone.dropzone-active {
+  background: rgba(107, 82, 55, 0.5);
 }
 
 .dropzone-icon {
@@ -460,9 +465,17 @@ body {
 
 .results-section { margin-top: 48px; }
 
+/* Single column, always full width -- was auto-fill with a 320px
+   minimum, which meant on a wider window candidate cards could end up
+   3-across at ~320-400px each. That's fine for the collapsed card, but
+   badly cramps the "full details" panel's 2-column skill breakdown
+   once expanded (text wraps awkwardly, columns squeeze to ~150px).
+   Full-width single-column is viewport-size-independent -- it can't
+   regress just because a demo laptop/projector has a different
+   resolution than whatever was used to test it. */
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -670,6 +683,119 @@ body {
   color: var(--red);
   background: rgba(147, 0, 10, 0.22);
   border-color: rgba(255, 180, 171, 0.55);
+}
+
+/* ============ Candidate detail (expand-on-click) ============ */
+
+.detail-toggle {
+  margin-top: 14px;
+  background: transparent;
+  color: var(--primary-strong);
+  border: 1px solid rgba(192, 138, 92, 0.4);
+}
+
+.detail-toggle:hover { background: rgba(192, 138, 92, 0.1); }
+
+.candidate-detail {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .detail-grid { grid-template-columns: 1fr; }
+}
+
+.detail-heading {
+  margin: 16px 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.detail-heading:first-child { margin-top: 0; }
+
+.detail-row {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--on-surface);
+}
+
+.detail-label {
+  display: inline-block;
+  min-width: 150px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.detail-list {
+  margin: 0 0 8px;
+  padding-left: 18px;
+  font-size: 14px;
+  color: var(--on-surface-variant);
+}
+
+.detail-list li { margin-bottom: 6px; }
+
+.skill-match-list {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skill-match-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 13px;
+}
+
+.skill-match-name { color: var(--on-surface); }
+
+.skill-match-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.skill-match-exact .skill-match-tag,
+.skill-match-synonym .skill-match-tag {
+  color: var(--green);
+  background: rgba(110, 231, 183, 0.12);
+}
+
+.skill-match-partial .skill-match-tag {
+  color: var(--amber);
+  background: rgba(252, 211, 77, 0.12);
+}
+
+.skill-match-implicit .skill-match-tag {
+  color: var(--primary-strong);
+  background: rgba(217, 180, 143, 0.12);
+}
+
+.skill-match-none .skill-match-tag {
+  color: var(--muted);
+  background: rgba(146, 144, 151, 0.1);
 }
 
 /* ============ Footer ============ */

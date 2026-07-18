@@ -175,15 +175,53 @@
         : '';
     });
 
-    function renderCandidate(c, withCgpaFlag) {
+    // Real drag-and-drop -- the card says "Drop Resumes Here" but had no
+    // drop handler wired up, so dragging files onto it silently did
+    // nothing. This makes the label actually true, and lets someone drag
+    // in multiple PDFs at once instead of relying on Cmd/Shift-click in
+    // the native file picker.
+    const dropzone = document.querySelector('.dropzone');
+    ['dragenter', 'dragover'].forEach(evt => {
+      dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('dropzone-active');
+      });
+    });
+    ['dragleave', 'drop'].forEach(evt => {
+      dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('dropzone-active');
+      });
+    });
+    dropzone.addEventListener('drop', (e) => {
+      const dropped = e.dataTransfer && e.dataTransfer.files;
+      if (dropped && dropped.length) {
+        fileInput.files = dropped;
+        fileInput.dispatchEvent(new Event('change'));
+      }
+    });
+
+    function renderCandidate(c, withCgpaFlag, details) {
       const reasons = (c.reasons || []).map(r => `<li>${r}</li>`).join('');
       const cgpaFlag = withCgpaFlag && c.below_cgpa_minimum
         ? `<span class="badge badge-low">Below CGPA min</span>` : '';
+      // Full detail lives on its own page now, not expanded inline --
+      // opens in a new tab (target="_blank", no rel="noopener") so it
+      // keeps this results view untouched and still has access to the
+      // same sessionStorage data (same-origin new tabs inherit a clone
+      // of it). Only link it if this candidate actually has detail data
+      // (parse failures never get an entry -- see app.py's /api/run).
+      const hasDetail = details && details[c.file];
+      const detailLink = hasDetail
+        ? `<a href="/candidate?file=${encodeURIComponent(c.file)}" target="_blank" class="btn btn-sm detail-toggle">View full details ↗</a>`
+        : '';
       return `
         <article class="candidate-card">
           <header class="candidate-card-header">
             <div class="candidate-identity">
-              <h3 class="candidate-name">${c.name || c.file}</h3>
+              <h3 class="candidate-name">${c.name || 'Name not extracted'}</h3>
               <p class="candidate-meta">${c.file}${c.rank ? ' · Rank #' + c.rank : ''}</p>
             </div>
             <div class="candidate-score">
@@ -197,22 +235,25 @@
             ${cgpaFlag}
           </div>
           <ul class="candidate-reasons">${reasons}</ul>
+          ${detailLink}
         </article>`;
     }
 
     function renderResults(payload) {
       const r = payload.result;
+      const details = payload.details || {};
+      detailIdCounter = 0;
       let html = `<h2 class="results-jd-heading">${payload.jd}</h2>`;
       html += `<p class="results-summary">Evaluated ${r.summary.evaluated} · Shortlisted ${r.summary.shortlisted} · Cutoff ${r.summary.score_cutoff_used} · Parse failures ${r.summary.parse_failures}</p>`;
 
       html += `<h3 class="results-section-heading">Shortlist</h3>`;
       html += r.shortlist.length
-        ? r.shortlist.map(c => renderCandidate(c, false)).join('')
+        ? r.shortlist.map(c => renderCandidate(c, false, details)).join('')
         : '<p class="results-empty">No candidates met the cutoff.</p>';
 
       html += `<h3 class="results-section-heading">Reserve</h3>`;
       html += r.reserve.length
-        ? r.reserve.map(c => renderCandidate(c, true)).join('')
+        ? r.reserve.map(c => renderCandidate(c, true, details)).join('')
         : '<p class="results-empty">Empty.</p>';
 
       html += `<h3 class="results-section-heading">Needs Review</h3>`;
@@ -264,6 +305,12 @@
           errorEl.textContent = data.error || 'Something went wrong.';
         } else {
           statusEl.textContent = '';
+          // Saved so (a) the /candidate page, opened in a new tab, can
+          // read the same data back out without a second network round
+          // trip, and (b) this page restores its own last results below
+          // if the browser is closed/reopened to this tab or refreshed
+          // mid-demo -- results don't just vanish.
+          sessionStorage.setItem('parseloom_last_run', JSON.stringify(data));
           renderResults(data);
         }
       } catch (err) {
@@ -272,6 +319,19 @@
         runBtn.disabled = false;
       }
     });
+
+    // Restore the last results on page load (e.g. after refreshing, or
+    // coming back from the /candidate detail tab) instead of showing an
+    // empty results section that looks like the run never happened.
+    (function restoreLastRun() {
+      const saved = sessionStorage.getItem('parseloom_last_run');
+      if (!saved) return;
+      try {
+        renderResults(JSON.parse(saved));
+      } catch (err) {
+        sessionStorage.removeItem('parseloom_last_run');
+      }
+    })();
   </script>
 
 </body>
