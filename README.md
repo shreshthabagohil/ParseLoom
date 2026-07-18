@@ -27,13 +27,36 @@ Verify with `tesseract --version` before relying on the OCR fallback.
 Copy `.env.example` to `.env` and add whichever AI provider key you have:
 
 ```
-AI_PROVIDER=openai        # or anthropic / gemini
+AI_PROVIDER=groq        # or openai / anthropic / gemini
 OPENAI_API_KEY=
 ANTHROPIC_API_KEY=
 GEMINI_API_KEY=
+GROQ_API_KEY=
 ```
 
+Note on providers, from a real run against the full dataset: the
+`GEMINI_API_KEY` free tier is capped at **20 requests/day per model**,
+which is not enough to parse more than a handful of resumes before
+you'll hit a 429 (confirmed, see PROJECT_CONTEXT.md Section 11). Groq's
+free tier (get a key at https://console.groq.com/keys) has a much higher
+daily cap and is what actually completed a real 54-resume run — it's
+the recommended default unless you have a paid-tier key for one of the
+others.
+
 ## Run
+
+`data/real_resumes/` is gitignored (real students' resumes are PII, see
+`.gitignore`) — it won't exist on a fresh clone. To try the engine
+immediately without real data, run it against the synthetic edge-case
+resumes checked into `data/mock_resumes/` instead (covers OCR fallback,
+all CGPA formats, implicit-only skills, a corrupted file, and more —
+see PROJECT_CONTEXT.md Section 11.5):
+
+```bash
+python main.py --resumes data/mock_resumes --jd frontend
+```
+
+Once you have a real resumes folder locally:
 
 ```bash
 python main.py --resumes data/real_resumes --jd frontend
@@ -42,7 +65,21 @@ python main.py --resumes data/real_resumes --jd path/to/sixth_jd.json
 ```
 
 Output is written to `output/sample_output.json` and
-`output/parse_quality_report.md`.
+`output/parse_quality_report.md`. Verified end-to-end from a clean
+virtualenv against `data/mock_resumes/` (10 resumes, ~8 seconds).
+
+## Tests
+
+```bash
+pytest tests/
+```
+
+29 tests covering `scorer.py`, `grade_normalizer.py`, and
+`skill_matcher.py` -- pure logic, no LLM calls, no API quota used, runs
+in well under a second. Exists to catch regressions in the
+parse-quality-gates-confidence rule (Tricky Part 4) and the grade/skill
+matching logic, since those are the parts most likely to break silently
+if edited later.
 
 ## Human-in-the-loop, by design
 

@@ -19,6 +19,12 @@ banner that spans both columns can get pulled into whichever column it
 overlaps more, and true three-column layouts aren't specifically
 handled — they'll approximate as two.
 
+Verified against real data: 31 of 54 real resumes triggered genuine
+two-column splitting, with coherent (non-interleaved) output. The known
+failure case above was also deliberately tested with a synthetic
+full-width-banner resume; it caused imperfect ordering but no data
+loss — the limitation is real but not catastrophic in practice.
+
 ## Tricky Part 2 — The scanned resume
 
 After standard text extraction, we count the words returned. If it's
@@ -29,6 +35,13 @@ it as OCR-derived, which caps its confidence lower than a clean text
 extraction. If OCR still yields under 50 words, we mark the parse as
 Failed with an explicit note, rather than guessing at a score from
 almost nothing.
+
+Verified against a genuine image-only PDF (no text layer at all, not
+just a low-text one): OCR triggered correctly, recovered a usable CGPA
+and skill set, and was correctly capped at Partial confidence. None of
+the real 54-resume dataset happened to contain an actual scanned
+resume, so this path is confirmed working but only on a synthetic
+example, not a real one from the event's dataset.
 
 ## Tricky Part 3 — Skill extraction from unstructured text
 
@@ -46,6 +59,17 @@ model's output. What this combination still misses: skills described
 using terminology neither list recognizes — invented tool names, very
 new or obscure technologies.
 
+Verified against real data: 114 real partial-match instances and 6 real
+implicit-match instances across the 54-resume dataset (implicit
+matching is genuine but rare in practice). The extraction prompt also
+includes explicit instructions to treat resume text as untrusted data,
+never as commands to follow — tested against a real prompt-injection
+attempt (a fake "SYSTEM OVERRIDE" instruction embedded in resume text
+claiming a perfect CGPA and skill set); the model correctly ignored it
+and extracted only the genuinely present content. Relevant because this
+is a resume *screening* tool — a candidate has direct incentive to try
+exactly this.
+
 ## Tricky Part 4 — Parse quality affects score confidence
 
 Confidence is derived directly from parse status, not just from how the
@@ -56,3 +80,9 @@ built on incomplete information. A Failed parse produces no numeric
 score at all: only a flag and a recommendation for human review. This
 rule lives in a single function in the scoring engine so it can't be
 silently skipped by a code path that forgets to check it.
+
+Verified against real data: 54/54 real resumes reached Clean status, so
+this rule's Partial/Failed branches were confirmed via synthetic
+edge cases instead (a genuinely too-sparse resume, a corrupted file, an
+empty file, and an OCR-derived resume all correctly hit the right
+branch — see PROJECT_CONTEXT.md Section 11.5).

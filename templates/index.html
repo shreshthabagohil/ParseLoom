@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ParseLoom — Smart Candidate Screener</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body id="top">
+
+  <!-- ============ Header ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h10M4 17h13" />
+            <path d="M17 10l3 2-3 2" />
+          </svg>
+        </span>
+        <span class="brand-name">ParseLoom</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#top" class="nav-link active">Dashboard</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#run-form" class="btn btn-primary btn-sm">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <h1 class="hero-title">One line to <em>hire</em> them all.</h1>
+      <p class="hero-sub">
+        ParseLoom transforms chaotic resumes into structured recruitment
+        intelligence using advanced LLM processing.
+      </p>
+    </section>
+
+    <!-- ============ Upload / Run form ============ -->
+    <form id="run-form" class="run-form">
+      <div class="bento-grid">
+
+        <!-- Resume dropzone card -->
+        <section class="card card-lg upload-card">
+          <div class="dropzone">
+            <div class="dropzone-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6" />
+                <path d="M12 17v-6" />
+                <path d="M9.5 13.5 12 11l2.5 2.5" />
+              </svg>
+            </div>
+            <h2 class="dropzone-title">Drop Resumes Here</h2>
+            <p class="dropzone-hint">
+              PDF only. Let our AI extract the core competencies instantly.
+            </p>
+            <label class="file-label" for="resume-files">
+              <span class="file-btn"><span class="plus" aria-hidden="true">+</span> Select Files</span>
+              <input
+                type="file"
+                id="resume-files"
+                name="resume-files"
+                class="file-input"
+                multiple
+                accept=".pdf"
+              />
+            </label>
+            <p id="file-selected-text" style="margin-top:10px; font-family:var(--font-mono); font-size:12px; color:var(--primary-strong);"></p>
+          </div>
+        </section>
+
+        <!-- Target role card -->
+        <section class="card card-sm role-card">
+          <h2 class="card-title">
+            <span class="card-title-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="12" cy="12" r="1" fill="currentColor" />
+              </svg>
+            </span>
+            Target Role
+          </h2>
+          <p class="card-sub">Define what you're looking for.</p>
+
+          <div class="field">
+            <label class="field-label" for="jd-select">Quick Roles</label>
+            <select id="jd-select" name="jd-select" class="select">
+              <option value="">— Select a role —</option>
+              {% for opt in jd_options %}<option value="{{ opt.key }}">{{ opt.role }}</option>{% endfor %}
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="jd-text">Custom Spec</label>
+            <textarea
+              id="jd-text"
+              name="jd-text"
+              class="textarea"
+              rows="6"
+              placeholder="Or paste a full job description here…"
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Run bar -->
+        <section class="card card-wide run-bar">
+          <div class="run-bar-copy">
+            <h2 class="run-bar-title">Ready to screen</h2>
+            <p class="run-bar-sub">Real LLM extraction + scoring runs per resume — a few seconds each.</p>
+          </div>
+          <div class="run-bar-actions">
+            <button type="submit" id="run-btn" class="btn btn-primary btn-lg">
+              Run Analysis
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </form>
+
+    <!-- ============ Status / errors ============ -->
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="error" class="error" role="alert"></div>
+
+    <!-- ============ Results ============ -->
+    <section class="results-section">
+      <div id="results-container" class="results-grid"><!-- populated by JS --></div>
+    </section>
+
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">PARSELOOM AI</span>
+        <p class="footer-copy">© 2026 ParseLoom AI. Built for recruitment excellence.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <span>InternLoom AI Dev Track</span>
+        <span>Gemini + Groq</span>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Wired in separately from Fable's design output -- Fable was
+    // deliberately not given JS logic to write (see the handoff
+    // instruction in chat). This binds to the exact IDs/classes Fable's
+    // markup already has, matching the candidate-card structure it
+    // documented in its own reference comment.
+    const form = document.getElementById('run-form');
+    const statusEl = document.getElementById('status');
+    const errorEl = document.getElementById('error');
+    const resultsEl = document.getElementById('results-container');
+    const runBtn = document.getElementById('run-btn');
+    const fileInput = document.getElementById('resume-files');
+    const fileSelectedText = document.getElementById('file-selected-text');
+
+    fileInput.addEventListener('change', () => {
+      const n = fileInput.files.length;
+      fileSelectedText.textContent = n
+        ? `${n} file${n > 1 ? 's' : ''} selected: ${Array.from(fileInput.files).map(f => f.name).join(', ')}`
+        : '';
+    });
+
+    function renderCandidate(c, withCgpaFlag) {
+      const reasons = (c.reasons || []).map(r => `<li>${r}</li>`).join('');
+      const cgpaFlag = withCgpaFlag && c.below_cgpa_minimum
+        ? `<span class="badge badge-low">Below CGPA min</span>` : '';
+      return `
+        <article class="candidate-card">
+          <header class="candidate-card-header">
+            <div class="candidate-identity">
+              <h3 class="candidate-name">${c.name || c.file}</h3>
+              <p class="candidate-meta">${c.file}${c.rank ? ' · Rank #' + c.rank : ''}</p>
+            </div>
+            <div class="candidate-score">
+              <span class="score-value">${c.score ?? '—'}</span>
+              <span class="score-label">AI Match</span>
+            </div>
+          </header>
+          <div class="candidate-badges">
+            <span class="badge badge-${(c.confidence||'').toLowerCase()}">Confidence: ${c.confidence}</span>
+            <span class="badge badge-${(c.parse_quality||'').toLowerCase()}">Parse: ${c.parse_quality}</span>
+            ${cgpaFlag}
+          </div>
+          <ul class="candidate-reasons">${reasons}</ul>
+        </article>`;
+    }
+
+    function renderResults(payload) {
+      const r = payload.result;
+      let html = `<h2 class="results-jd-heading">${payload.jd}</h2>`;
+      html += `<p class="results-summary">Evaluated ${r.summary.evaluated} · Shortlisted ${r.summary.shortlisted} · Cutoff ${r.summary.score_cutoff_used} · Parse failures ${r.summary.parse_failures}</p>`;
+
+      html += `<h3 class="results-section-heading">Shortlist</h3>`;
+      html += r.shortlist.length
+        ? r.shortlist.map(c => renderCandidate(c, false)).join('')
+        : '<p class="results-empty">No candidates met the cutoff.</p>';
+
+      html += `<h3 class="results-section-heading">Reserve</h3>`;
+      html += r.reserve.length
+        ? r.reserve.map(c => renderCandidate(c, true)).join('')
+        : '<p class="results-empty">Empty.</p>';
+
+      html += `<h3 class="results-section-heading">Needs Review</h3>`;
+      html += r.needs_review.length
+        ? r.needs_review.map(c => `
+            <article class="candidate-card">
+              <header class="candidate-card-header">
+                <div class="candidate-identity">
+                  <h3 class="candidate-name">${c.file}</h3>
+                </div>
+              </header>
+              <p class="candidate-meta">${c.reason}</p>
+            </article>`).join('')
+        : '<p class="results-empty">None — every resume parsed enough to be scored.</p>';
+
+      resultsEl.innerHTML = html;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.textContent = '';
+      resultsEl.innerHTML = '';
+
+      const jdSelect = document.getElementById('jd-select').value;
+      const jdText = document.getElementById('jd-text').value.trim();
+      const jdValue = jdText || jdSelect;
+      if (!jdValue) {
+        errorEl.textContent = 'Select a known role or paste a job description.';
+        return;
+      }
+
+      const files = document.getElementById('resume-files').files;
+      if (!files.length) {
+        errorEl.textContent = 'Upload at least one PDF resume.';
+        return;
+      }
+
+      const formData = new FormData();
+      for (const f of files) formData.append('resumes', f);
+      formData.append('jd', jdValue);
+
+      runBtn.disabled = true;
+      statusEl.textContent = `Parsing ${files.length} resume(s) and scoring against the JD — this calls a real LLM per resume, expect a few seconds per file...`;
+
+      try {
+        const resp = await fetch('/api/run', { method: 'POST', body: formData });
+        const data = await resp.json();
+        if (!resp.ok) {
+          errorEl.textContent = data.error || 'Something went wrong.';
+        } else {
+          statusEl.textContent = '';
+          renderResults(data);
+        }
+      } catch (err) {
+        errorEl.textContent = 'Request failed: ' + err;
+      } finally {
+        runBtn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ParseLoom AI - Processing View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#141b2c",
+            "on-secondary-fixed-variant": "#4f319c",
+            "surface-container-low": "#1a1c1c",
+            "on-primary-fixed-variant": "#45455b",
+            "on-error": "#690005",
+            "surface-tint": "#c6c4df",
+            "tertiary-fixed": "#dbe2fa",
+            "error-container": "#93000a",
+            "tertiary": "#bfc6dd",
+            "on-background": "#e2e2e2",
+            "surface-container-highest": "#333535",
+            "on-primary-fixed": "#1a1a2e",
+            "surface-container-high": "#282a2a",
+            "surface-container-lowest": "#0c0f0e",
+            "on-primary": "#2f2e43",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#e8ddff",
+            "on-tertiary-container": "#7d8499",
+            "secondary-fixed-dim": "#cebdff",
+            "on-tertiary-fixed-variant": "#3f4759",
+            "inverse-primary": "#5d5c74",
+            "surface-bright": "#383939",
+            "on-surface-variant": "#c8c5cd",
+            "on-secondary-container": "#bea8ff",
+            "tertiary-container": "#141c2d",
+            "on-secondary-fixed": "#21005e",
+            "primary": "#c6c4df",
+            "surface": "#121414",
+            "secondary": "#cebdff",
+            "outline": "#929097",
+            "tertiary-fixed-dim": "#bfc6dd",
+            "on-primary-container": "#83829b",
+            "on-secondary": "#381385",
+            "on-surface": "#e2e2e2",
+            "surface-dim": "#121414",
+            "primary-fixed-dim": "#c6c4df",
+            "on-tertiary": "#293042",
+            "surface-container": "#1e2020",
+            "outline-variant": "#47464c",
+            "inverse-surface": "#e2e2e2",
+            "surface-variant": "#333535",
+            "background": "#121414",
+            "secondary-container": "#4f319c",
+            "primary-container": "#1a1a2e",
+            "error": "#ffb4ab",
+            "primary-fixed": "#e2e0fc",
+            "inverse-on-surface": "#2f3130"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "16px",
+            "base": "8px",
+            "margin-desktop": "40px",
+            "grid-gap": "24px",
+            "margin-mobile": "20px"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Geist"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-xl": ["Geist"],
+            "headline-lg": ["Geist"],
+            "body-md": ["Geist"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #0c0f0e;
+      overflow-x: hidden;
+    }
+
+    .glass-card {
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(167, 139, 250, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(167, 139, 250, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shimmer::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-150%) rotate(45deg); }
+      100% { transform: translateX(150%) rotate(45deg); }
+    }
+
+    .processing-pulse {
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0px 0px rgba(167, 139, 250, 0); }
+      50% { box-shadow: 0 0 20px 2px rgba(167, 139, 250, 0.2); }
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    .status-ring {
+      stroke-dasharray: 440;
+      stroke-dashoffset: 440;
+      transition: stroke-dashoffset 2s ease-out;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-surface-container-lowest/70 backdrop-blur-xl border-b border-outline-variant/30 dark:border-white/10 shadow-sm backdrop-saturate-150">
+<div class="flex justify-between items-center px-gutter md:px-margin-desktop py-4 max-w-full mx-auto">
+<div class="font-headline-lg text-headline-lg font-bold tracking-tight text-on-surface dark:text-on-background">ParseLoom</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-background transition-colors font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-primary dark:text-secondary font-semibold border-b-2 border-primary dark:border-secondary pb-1 font-body-md text-body-md" href="#">Analysis</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface dark:hover:text-on-background transition-colors font-body-md text-body-md" href="#">History</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-white/5 p-2 rounded-full transition-all">settings</button>
+<button class="hidden md:block bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm scale-95 active:scale-90 transition-transform">Get Started</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-gutter md:px-margin-desktop min-h-screen relative overflow-hidden">
+<!-- Atmospheric Glows -->
+<div class="absolute -top-40 -right-40 w-96 h-96 bg-secondary-fixed-dim/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute top-1/2 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto space-y-grid-gap">
+<!-- Top Section: Stats & Progress -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-grid-gap">
+<!-- Large Central Progress Ring -->
+<div class="md:col-span-8 glass-card rounded-xl p-8 relative flex flex-col md:flex-row items-center gap-8 overflow-hidden">
+<div class="relative w-48 h-48 md:w-64 md:h-64">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="50%" cy="50%" fill="transparent" r="45%" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-secondary status-ring" cx="50%" cy="50%" fill="transparent" id="progress-circle" r="45%" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="100" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-xl text-headline-xl text-on-surface" id="progress-text">0%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Parsing Engine</span>
+</div>
+</div>
+<div class="flex-1 space-y-4 text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Processing Pipeline</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Our neural network is currently extracting semantic relationships from 48 CVs. Identifying skills, experiences, and cultural markers.</p>
+<div class="flex flex-wrap gap-3 justify-center md:justify-start">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm">Neural Mapping Active</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span class="font-label-sm text-label-sm">High Priority</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Metrics Card -->
+<div class="md:col-span-4 glass-card rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-primary-container p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">+12.5% vs avg</span>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Avg. Confidence</span>
+<div class="font-headline-lg text-headline-lg">94.2%</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between font-label-sm text-label-sm mb-2">
+<span class="text-on-surface-variant">Queue Depth</span>
+<span class="text-on-surface">Ready in 2m</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary w-2/3 h-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Grid: Candidate Processing Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-grid-gap" id="candidate-grid">
+<!-- JS will populate cards here to ensure variety and animation control -->
+</div>
+</div>
+</main>
+<footer class="w-full py-12 bg-surface dark:bg-surface-container-lowest border-t border-outline-variant/20">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter md:px-margin-desktop gap-grid-gap max-w-7xl mx-auto">
+<div class="font-label-sm text-label-sm font-black uppercase tracking-widest text-on-surface-variant">ParseLoom AI</div>
+<nav class="flex gap-6">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary font-label-sm text-label-sm transition-opacity" href="#">Hackathon Specs</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary font-label-sm text-label-sm transition-opacity" href="#">AI Model Info</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary font-label-sm text-label-sm transition-opacity" href="#">Privacy Policy</a>
+</nav>
+<div class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-container opacity-60">© 2024 ParseLoom AI. Built for recruitment excellence.</div>
+</div>
+</footer>
+<script>
+    const candidates = [
+      { name: "Alex Rivera", status: "Clean", icon: "person" },
+      { name: "Jordan Smith", status: "Partial", icon: "account_circle" },
+      { name: "Sam Chen", status: "Pending", icon: "badge" },
+      { name: "Taylor Reed", status: "Failed", icon: "face" },
+      { name: "Morgan Lee", status: "Clean", icon: "person_4" },
+      { name: "Casey Wood", status: "Pending", icon: "person_3" },
+      { name: "Riley Sun", status: "Clean", icon: "support_agent" },
+      { name: "Quinn Davis", status: "Partial", icon: "engineering" },
+      { name: "Jamie Lane", status: "Pending", icon: "psychology" },
+      { name: "Parker Roe", status: "Failed", icon: "school" },
+      { name: "Sky Miller", status: "Clean", icon: "workspace_premium" },
+      { name: "Jesse Blue", status: "Pending", icon: "verified" },
+      { name: "Robin Grey", status: "Partial", icon: "smart_toy" },
+      { name: "Avery Holt", status: "Clean", icon: "rocket_launch" },
+      { name: "Charlie Fin", status: "Pending", icon: "groups" },
+      { name: "Dakota Sky", status: "Pending", icon: "diversity_3" },
+      { name: "Emerson Key", status: "Pending", icon: "handyman" },
+      { name: "Frankie Wu", status: "Pending", icon: "architecture" }
+    ];
+
+    const grid = document.getElementById('candidate-grid');
+
+    candidates.forEach((c, i) => {
+      const card = document.createElement('div');
+      card.className = `h-40 group [perspective:1000px]`;
+      card.innerHTML = `
+        <div class="flip-card-inner h-full w-full relative">
+          <!-- Pending State (Front) -->
+          <div class="flip-card-front glass-card rounded-xl p-4 flex flex-col items-center justify-center text-center gap-3 processing-pulse border-primary/20">
+            <div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary-container animate-spin" style="animation-duration: 3s">refresh</span>
+            </div>
+            <div class="space-y-1">
+              <div class="h-3 w-16 bg-surface-container-highest rounded animate-pulse mx-auto"></div>
+              <div class="h-2 w-24 bg-surface-container-highest/50 rounded animate-pulse mx-auto"></div>
+            </div>
+          </div>
+          <!-- Completed State (Back) -->
+          <div class="flip-card-back glass-card rounded-xl p-4 flex flex-col items-center justify-center text-center gap-3 border-outline-variant/40">
+            <div class="w-12 h-12 rounded-full ${getStatusBg(c.status)} flex items-center justify-center">
+              <span class="material-symbols-outlined ${getStatusText(c.status)}">${c.icon}</span>
+            </div>
+            <div class="space-y-1">
+              <div class="font-label-sm text-label-sm text-on-surface truncate w-full">${c.name}</div>
+              <div class="font-label-sm text-[10px] uppercase tracking-tighter ${getStatusText(c.status)}">${c.status}</div>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+
+      // Staggered reveal
+      setTimeout(() => {
+        if (c.status !== 'Pending') {
+          card.classList.add('flipped');
+        }
+      }, 1500 + (i * 200));
+    });
+
+    function getStatusBg(status) {
+      switch(status) {
+        case 'Clean': return 'bg-emerald-500/10 border border-emerald-500/30';
+        case 'Partial': return 'bg-amber-500/10 border border-amber-500/30';
+        case 'Failed': return 'bg-rose-500/10 border border-rose-500/30';
+        default: return 'bg-surface-container-high';
+      }
+    }
+
+    function getStatusText(status) {
+      switch(status) {
+        case 'Clean': return 'text-emerald-400';
+        case 'Partial': return 'text-amber-400';
+        case 'Failed': return 'text-rose-400';
+        default: return 'text-on-surface-variant';
+      }
+    }
+
+    // Progress Ring Logic
+    const circle = document.getElementById('progress-circle');
+    const text = document.getElementById('progress-text');
+    let progress = 0;
+    
+    // SVG Dash Array is ~283 for r=45% of 100x100, but we use a radius calc here
+    // C = 2 * PI * r -> 2 * 3.14159 * 45 = 282.7
+    const circumference = 2 * Math.PI * 45;
+    circle.style.strokeDasharray = circumference;
+
+    const interval = setInterval(() => {
+      progress += Math.floor(Math.random() * 3) + 1;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+      }
+      const offset = circumference - (progress / 100) * circumference;
+      circle.style.strokeDashoffset = offset;
+      text.innerText = progress + '%';
+      
+      // Flip remaining pending cards randomly as progress moves
+      if (progress % 10 === 0) {
+        const pendings = Array.from(document.querySelectorAll('.flip-card-inner:not(.flipped)'));
+        if (pendings.length > 0) {
+          const randomIdx = Math.floor(Math.random() * pendings.length);
+          // In real app we'd change data, here we just flip for visual
+          pendings[randomIdx].parentElement.classList.add('flipped');
+        }
+      }
+    }, 200);
+
+  </script>
+</body></html>

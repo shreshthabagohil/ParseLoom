@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ParseLoom -- Results</title>
+</head>
+<body>
+<!--
+  Standalone results template, kept minimal on purpose -- the working
+  demo flow renders results directly into index.html via JS/fetch
+  (#results-container). This file exists as a second styling target if
+  Fable/Stitch produce a dedicated results page design; wire it up to
+  /api/run's JSON response using the same field names index.html's JS
+  already uses: result.summary, result.shortlist[], result.reserve[],
+  result.needs_review[]. Each candidate row has: file, name, score,
+  confidence, parse_quality, reasons[], and (reserve only)
+  below_cgpa_minimum.
+-->
+<h1>Results</h1>
+<p>See index.html's JS for the live rendering logic and exact field names to bind to.</p>
+</body>
+</html>

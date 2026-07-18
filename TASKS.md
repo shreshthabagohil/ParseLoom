@@ -85,11 +85,27 @@ you re-explaining anything.
 - [ ] Bonus A (web UI) — only attempt if everything above is done
 
 ## 2:15 – 2:45 PM — Required docs
-- [ ] `DESIGN_DECISIONS.md` — the four Tricky Parts, one paragraph each,
-      actual implementation not theory (draft already exists, just
-      confirm it still matches what got built)
-- [ ] `AI_USAGE_LOG.md` — max 200 words
-- [ ] `README.md` — setup + a working example run in under 5 minutes
+- [x] `DESIGN_DECISIONS.md` — confirmed accurate to the real
+      implementation, added real verification evidence to each of the
+      four Tricky Parts (real data counts, not just theory)
+- [x] `AI_USAGE_LOG.md` — rewritten with real, specific detail (was
+      still placeholder text with `[fill in]` markers), ~185 words
+- [x] `README.md` — verified via a clean venv + `pip install` + real run
+      (not just eyeballed): works in ~8 seconds against
+      `data/mock_resumes/`. Fixed real gaps: didn't mention
+      `GROQ_API_KEY` at all despite it being the provider that actually
+      completed the real run, and gave no way to try the engine without
+      `data/real_resumes/` (gitignored, won't exist on a fresh clone) --
+      now points to `data/mock_resumes/` for that. Added a `pytest
+      tests/` section (see below).
+
+## New: automated test suite (2026-07-18, not in the original plan)
+- [x] `tests/` -- 29 pytest tests covering `scorer.py`,
+      `grade_normalizer.py`, and `skill_matcher.py`. Pure logic, no LLM
+      calls, runs in <1s, added specifically to protect the
+      parse-quality-gates-confidence rule (Tricky Part 4) and grade/skill
+      matching from silent regression on future edits. Added
+      `pytest==8.3.3` to `requirements.txt` as a dev-only dependency.
 
 ## 2:45 – 3:00 PM — Final commit, buffer
 - [ ] Fresh clone + `pip install` + run, confirm it actually works clean

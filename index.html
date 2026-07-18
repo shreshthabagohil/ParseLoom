@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ParseLoom — Smart Candidate Screener</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h10M4 17h13" />
+            <path d="M17 10l3 2-3 2" />
+          </svg>
+        </span>
+        <span class="brand-name">ParseLoom</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#" class="nav-link active">Dashboard</a>
+        <a href="#" class="nav-link">Analysis</a>
+        <a href="#" class="nav-link">History</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#run-form" class="btn btn-primary btn-sm">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <h1 class="hero-title">One line to <em>hire</em> them all.</h1>
+      <p class="hero-sub">
+        ParseLoom transforms chaotic resumes into structured recruitment
+        intelligence using advanced LLM processing.
+      </p>
+    </section>
+
+    <!-- ============ Upload / Run form ============ -->
+    <form id="run-form" class="run-form" method="post" enctype="multipart/form-data">
+      <div class="bento-grid">
+
+        <!-- Resume dropzone card -->
+        <section class="card card-lg upload-card">
+          <div class="dropzone">
+            <div class="dropzone-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6" />
+                <path d="M12 17v-6" />
+                <path d="M9.5 13.5 12 11l2.5 2.5" />
+              </svg>
+            </div>
+            <h2 class="dropzone-title">Drop Resumes Here</h2>
+            <p class="dropzone-hint">
+              PDF, DOCX, or JSON. Let our AI extract the core competencies instantly.
+            </p>
+            <label class="file-label" for="resume-files">
+              <span class="file-btn"><span class="plus" aria-hidden="true">+</span> Select Files</span>
+              <input
+                type="file"
+                id="resume-files"
+                name="resume-files"
+                class="file-input"
+                multiple
+                accept=".pdf,.docx,.json,.txt"
+              />
+            </label>
+          </div>
+        </section>
+
+        <!-- Target role card -->
+        <section class="card card-sm role-card">
+          <h2 class="card-title">
+            <span class="card-title-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="12" cy="12" r="1" fill="currentColor" />
+              </svg>
+            </span>
+            Target Role
+          </h2>
+          <p class="card-sub">Define what you're looking for.</p>
+
+          <div class="field">
+            <label class="field-label" for="jd-select">Quick Roles</label>
+            <select id="jd-select" name="jd-select" class="select">
+              <option value="">— Select a role —</option>
+              {% for opt in jd_options %}<option value="{{ opt.key }}">{{ opt.role }}</option>{% endfor %}
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="jd-text">Custom Spec</label>
+            <textarea
+              id="jd-text"
+              name="jd-text"
+              class="textarea"
+              rows="6"
+              placeholder="Or paste a full job description here…"
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Run bar -->
+        <section class="card card-wide run-bar">
+          <div class="run-bar-copy">
+            <h2 class="run-bar-title">Ready to screen</h2>
+            <p class="run-bar-sub">Global recruitment benchmarks applied to current session.</p>
+          </div>
+          <div class="run-bar-actions">
+            <button type="submit" id="run-btn" class="btn btn-primary btn-lg">
+              Run Analysis
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </form>
+
+    <!-- ============ Status / errors ============ -->
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="error" class="error" role="alert"></div>
+
+    <!-- ============ Results ============ -->
+    <section class="results-section">
+      <div id="results-container" class="results-grid"><!-- populated by JS --></div>
+    </section>
+
+    <!--
+      Reference markup for a JS-injected result card (not rendered):
+
+      <article class="candidate-card">
+        <header class="candidate-card-header">
+          <div class="candidate-identity">
+            <h3 class="candidate-name">Alex Chen</h3>
+            <p class="candidate-meta">Principal UX @ Google</p>
+          </div>
+          <div class="candidate-score">
+            <span class="score-value">98</span>
+            <span class="score-label">AI Match</span>
+          </div>
+        </header>
+        <div class="candidate-badges">
+          <span class="badge badge-high">Confidence: High</span>
+          <span class="badge badge-clean">Parse: Clean</span>
+        </div>
+      </article>
+
+      Confidence badges: badge-high / badge-medium / badge-low / badge-na
+      Parse badges:      badge-clean / badge-partial / badge-failed
+    -->
+
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">PARSELOOM AI</span>
+        <p class="footer-copy">© 2026 ParseLoom AI. Built for recruitment excellence.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">Hackathon Specs</a>
+        <a href="#">AI Model Info</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
