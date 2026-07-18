@@ -1,0 +1,459 @@
+{
+  "Frontend Developer": {
+    "jd": "Frontend Developer",
+    "summary": {
+      "evaluated": 6,
+      "shortlisted": 6,
+      "score_cutoff_used": 4.4,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": null,
+        "score": 34.3,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": null,
+        "score": 34.3,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": null,
+        "score": 8.8,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, GitHub.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 4,
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": null,
+        "score": 8.8,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, GitHub.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 5,
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": null,
+        "score": 4.4,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 6,
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": null,
+        "score": 4.4,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      }
+    ],
+    "reserve": [],
+    "needs_review": []
+  },
+  "Backend Developer": {
+    "jd": "Backend Developer",
+    "summary": {
+      "evaluated": 6,
+      "shortlisted": 6,
+      "score_cutoff_used": 4.4,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": null,
+        "score": 24.2,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 3/8 required skills directly: Python, Git, GitHub.",
+          "Missing 2 required skill(s): Node.js, Java.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": null,
+        "score": 22.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, SQL, Git, GitHub.",
+          "Missing 4 required skill(s): Node.js, Java, REST API design, NoSQL.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": null,
+        "score": 22.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, SQL, Git, GitHub.",
+          "Missing 4 required skill(s): Node.js, Java, REST API design, NoSQL.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 4,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": null,
+        "score": 19.7,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 3/8 required skills directly: Python, Git, GitHub.",
+          "Missing 2 required skill(s): Node.js, Java.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 5,
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": null,
+        "score": 4.4,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 6,
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": null,
+        "score": 4.4,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      }
+    ],
+    "reserve": [],
+    "needs_review": []
+  },
+  "Full Stack Developer": {
+    "jd": "Full Stack Developer",
+    "summary": {
+      "evaluated": 6,
+      "shortlisted": 6,
+      "score_cutoff_used": 5.0,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": null,
+        "score": 25.6,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 4/7 required skills directly: React.js, Database, Git, GitHub.",
+          "Missing 3 required skill(s): Node.js, REST APIs, deployment.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": null,
+        "score": 25.6,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 4/7 required skills directly: React.js, Database, Git, GitHub.",
+          "Missing 3 required skill(s): Node.js, REST APIs, deployment.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": null,
+        "score": 10.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 2/7 required skills directly: Git, GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 4,
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": null,
+        "score": 10.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 2/7 required skills directly: Git, GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 5,
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": null,
+        "score": 5.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 6,
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": null,
+        "score": 5.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      }
+    ],
+    "reserve": [],
+    "needs_review": []
+  },
+  "Database Developer": {
+    "jd": "Database Developer",
+    "summary": {
+      "evaluated": 6,
+      "shortlisted": 3,
+      "score_cutoff_used": 5.0,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": null,
+        "score": 8.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": null,
+        "score": 8.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": null,
+        "score": 5.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ]
+      }
+    ],
+    "reserve": [
+      {
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": null,
+        "score": 5.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": null,
+        "score": 0.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": null,
+        "score": 0.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ],
+        "below_cgpa_minimum": false
+      }
+    ],
+    "needs_review": []
+  },
+  "API Integration Developer": {
+    "jd": "API Integration Developer",
+    "summary": {
+      "evaluated": 6,
+      "shortlisted": 2,
+      "score_cutoff_used": 14.0,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": null,
+        "score": 14.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 2/5 required skills directly: REST API consumption, Postman.",
+          "Missing 3 required skill(s): Swagger, JSON handling, backend language.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": null,
+        "score": 14.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Matches 2/5 required skills directly: REST API consumption, Postman.",
+          "Missing 3 required skill(s): Swagger, JSON handling, backend language.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing."
+        ]
+      }
+    ],
+    "reserve": [
+      {
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": null,
+        "score": 0.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": null,
+        "score": 0.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": null,
+        "score": 0.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": null,
+        "score": 0.0,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "No further distinguishing signal found."
+        ],
+        "below_cgpa_minimum": false
+      }
+    ],
+    "needs_review": []
+  }
+}

@@ -1,0 +1,16 @@
+# Real students' resumes contain PII (names, emails, phone numbers).
+# The engine takes the folder as a CLI argument -- it never needs to be
+# committed to git. Regenerate locally by re-pointing --resumes at the
+# Drive folder (or its local copy) any time.
+data/real_resumes/
+
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Keep these -- they're required submission deliverables, not scratch:
+output/*
+!output/sample_output.json
+!output/parse_quality_report.md

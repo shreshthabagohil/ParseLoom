@@ -1,0 +1,37 @@
+{
+  "frontend": {
+    "role": "Frontend Developer",
+    "required_skills": ["HTML", "CSS", "JavaScript", "React.js", "Next.js", "Git", "GitHub", "REST API consumption"],
+    "preferred_skills": ["TypeScript", "Redux", "Zustand", "Responsive design", "Jest"],
+    "cgpa_min": 6.5,
+    "slots": 8
+  },
+  "backend": {
+    "role": "Backend Developer",
+    "required_skills": ["Node.js", "Python", "Java", "REST API design", "SQL", "NoSQL", "Git", "GitHub"],
+    "preferred_skills": ["Docker", "JWT", "OAuth", "API documentation", "Cloud basics"],
+    "cgpa_min": 6.5,
+    "slots": 10
+  },
+  "fullstack": {
+    "role": "Full Stack Developer",
+    "required_skills": ["React.js", "Node.js", "Database", "REST APIs", "Git", "GitHub", "deployment"],
+    "preferred_skills": ["Firebase", "cloud DB", "CI/CD", "GraphQL"],
+    "cgpa_min": 7.0,
+    "slots": 7
+  },
+  "database": {
+    "role": "Database Developer",
+    "required_skills": ["MySQL", "PostgreSQL", "schema design", "normalisation", "query writing", "query optimisation", "indexing"],
+    "preferred_skills": ["MongoDB", "Redis", "stored procedures", "aggregation pipelines", "ERD design"],
+    "cgpa_min": 6.0,
+    "slots": 3
+  },
+  "api_integration": {
+    "role": "API Integration Developer",
+    "required_skills": ["REST API consumption", "Postman", "Swagger", "JSON handling", "backend language"],
+    "preferred_skills": ["OAuth", "API key auth", "webhook handling", "third-party SDK integration", "API documentation writing"],
+    "cgpa_min": 6.0,
+    "slots": 2
+  }
+}

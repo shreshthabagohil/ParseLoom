@@ -1,0 +1,41 @@
+{
+  "Frontend Developer": {
+    "jd": "Frontend Developer",
+    "summary": {
+      "evaluated": 2,
+      "shortlisted": 2,
+      "score_cutoff_used": 34.3,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": "SIDDHARTH RAO",
+        "score": 68.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "Partial/inferred (not explicit) match on: Next.js, TypeScript -- flagged, not full credit.",
+          "CGPA 8.4 meets this role's 6.5 minimum."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": null,
+        "score": 34.3,
+        "confidence": "Medium",
+        "parse_quality": "Partial",
+        "reasons": [
+          "Resume only partially parsed -- confidence capped, some signal may be missing.",
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "Partial/inferred (not explicit) match on: Next.js, TypeScript -- flagged, not full credit."
+        ]
+      }
+    ],
+    "reserve": [],
+    "needs_review": []
+  }
+}

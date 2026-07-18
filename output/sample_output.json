@@ -1,0 +1,3323 @@
+{
+  "Frontend Developer": {
+    "jd": "Frontend Developer",
+    "summary": {
+      "evaluated": 54,
+      "shortlisted": 8,
+      "score_cutoff_used": 26.2,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "web_dev__aditya_kulkarni.pdf",
+        "name": "Aditya Kulkarni",
+        "score": 77.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 8/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "Also matches 3 preferred skill(s): TypeScript, Redux, Jest."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": "SIDDHARTH RAO",
+        "score": 68.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "Partial/inferred (not explicit) match on: Next.js, TypeScript -- flagged, not full credit.",
+          "CGPA 8.4 meets this role's 6.5 minimum."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": "KAVYA MENON",
+        "score": 68.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "Partial/inferred (not explicit) match on: Next.js, TypeScript -- flagged, not full credit.",
+          "CGPA 8.75 meets this role's 6.5 minimum."
+        ]
+      },
+      {
+        "rank": 4,
+        "file": "SDE_Resume_1_Aditya_Joshi.pdf",
+        "name": "ADITYA JOSHI",
+        "score": 64.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 6/8 required skills directly: HTML, CSS, JavaScript, Git.",
+          "Partial/inferred (not explicit) match on: React.js, Next.js, TypeScript -- flagged, not full credit.",
+          "CGPA 9.2 meets this role's 6.5 minimum."
+        ]
+      },
+      {
+        "rank": 5,
+        "file": "SDE_Resume_2_Meera_Pillai.pdf",
+        "name": "MEERA PILLAI",
+        "score": 64.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 6/8 required skills directly: HTML, CSS, JavaScript, Git.",
+          "Partial/inferred (not explicit) match on: React.js, Next.js, TypeScript -- flagged, not full credit.",
+          "CGPA 8.95 meets this role's 6.5 minimum."
+        ]
+      },
+      {
+        "rank": 6,
+        "file": "web_dev__priya_nair.pdf",
+        "name": "Priya Nair",
+        "score": 41.1,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: HTML, CSS, JavaScript.",
+          "Missing 3 required skill(s): Git, GitHub, REST API consumption.",
+          "Also matches 2 preferred skill(s): TypeScript, Responsive design."
+        ]
+      },
+      {
+        "rank": 7,
+        "file": "app_dev__tanvi_joshi.pdf",
+        "name": "Tanvi Joshi",
+        "score": 34.7,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: JavaScript, React.js, REST API consumption.",
+          "Missing 4 required skill(s): HTML, CSS, Git, GitHub.",
+          "Also matches 1 preferred skill(s): Redux."
+        ]
+      },
+      {
+        "rank": 8,
+        "file": "Python_Developer_Resume_1_Karan_Malhotra.pdf",
+        "name": "KARAN MALHOTRA",
+        "score": 26.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: Git, GitHub, REST API consumption.",
+          "Missing 5 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 9.0 meets this role's 6.5 minimum."
+        ]
+      }
+    ],
+    "reserve": [
+      {
+        "file": "Python_Developer_Resume_2_Ananya_Reddy.pdf",
+        "name": "Ananya Reddy",
+        "score": 26.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: Git, GitHub, REST API consumption.",
+          "Missing 5 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.5 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__rahul_bose.pdf",
+        "name": "Rahul Bose",
+        "score": 20.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, REST API consumption.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "Also matches 1 preferred skill(s): Jest."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "python_dev__karan_verma.pdf",
+        "name": "Karan Verma",
+        "score": 20.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, REST API consumption.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "Also matches 1 preferred skill(s): Jest."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "python_dev__sneha_reddy.pdf",
+        "name": "Sneha Reddy",
+        "score": 20.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, REST API consumption.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "Also matches 1 preferred skill(s): Jest."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": "VIKRAM NAIR",
+        "score": 17.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, GitHub.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.7 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": "PRIYA KULKARNI",
+        "score": 17.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, GitHub.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.9 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_1_Nikhil_Desai.pdf",
+        "name": "NIKHIL DESAI",
+        "score": 17.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, GitHub.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 9.0 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_2_Ishita_Gupta.pdf",
+        "name": "ISHITA GUPTA",
+        "score": 17.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, GitHub.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.6 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__ananya_subramanian.pdf",
+        "name": "Ananya Subramanian",
+        "score": 15.3,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, GitHub.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__ira_sen.pdf",
+        "name": "Ira Sen",
+        "score": 15.3,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: HTML, CSS.",
+          "Missing 6 required skill(s): JavaScript, React.js, Next.js, Git."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__ishaan_kapoor.pdf",
+        "name": "Ishaan Kapoor",
+        "score": 15.3,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Git, REST API consumption.",
+          "Missing 6 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": "Varun Kapoor",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.6 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": "NEHA BHATIA",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.45 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_1_Aman_Tripathi.pdf",
+        "name": "AMAN TRIPATHI",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 9.05 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_2_Shreya_Mehra.pdf",
+        "name": "SHREYA MEHRA",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.65 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_1_Yash_Choudhary.pdf",
+        "name": "Yash Choudhary",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.3 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_2_Anjali_Bose.pdf",
+        "name": "ANJALI BOSE",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.15 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_1_Sahil_Khanna.pdf",
+        "name": "SAHIL KHANNA",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.2 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_2_Riya_Singh.pdf",
+        "name": "RIYA SINGH",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.35 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_1_Arjun_Bhatt.pdf",
+        "name": "ARJUN BHATT",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.3 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_2_Tanya_Chauhan.pdf",
+        "name": "TANYA CHAUHAN",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.5 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_1_Rahul_Saxena.pdf",
+        "name": "Rahul Saxena",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.7 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_2_Pooja_Agarwal.pdf",
+        "name": "Pooja Agarwal",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "CGPA 8.4 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__nikhil_rao.pdf",
+        "name": "Nikhil Rao",
+        "score": 7.7,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: REST API consumption.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__rohan_mehta.pdf",
+        "name": "Rohan Mehta",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__kabir_malik.pdf",
+        "name": "Kabir Malik",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__riya_bansal.pdf",
+        "name": "Riya Bansal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__meera_iyer.pdf",
+        "name": "Meera Iyer",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__vikram_singh.pdf",
+        "name": "Vikram Singh",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__divya_pillai.pdf",
+        "name": "Divya Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__devansh_kothari.pdf",
+        "name": "Devansh Kothari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__aarushi_sharma.pdf",
+        "name": "Aarushi Sharma",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__siddharth_rao.pdf",
+        "name": "Siddharth Rao",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__kavya_menon.pdf",
+        "name": "Kavya Menon",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__rajesh_pillai.pdf",
+        "name": "Rajesh Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__deepak_yadav.pdf",
+        "name": "Deepak Yadav",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__farhan_ali.pdf",
+        "name": "Farhan Ali",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__harsh_vardhan.pdf",
+        "name": "Harsh Vardhan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__tanya_kapoor.pdf",
+        "name": "Tanya Kapoor",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__aman_tiwari.pdf",
+        "name": "Aman Tiwari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__neha_choudhary.pdf",
+        "name": "Neha Choudhary",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__arjun_desai.pdf",
+        "name": "Arjun Desai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__sara_khan.pdf",
+        "name": "Sara Khan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__yash_agarwal.pdf",
+        "name": "Yash Agarwal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__manav_chopra.pdf",
+        "name": "Manav Chopra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__pooja_malhotra.pdf",
+        "name": "Pooja Malhotra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): HTML, CSS, JavaScript, React.js."
+        ],
+        "below_cgpa_minimum": false
+      }
+    ],
+    "needs_review": []
+  },
+  "Backend Developer": {
+    "jd": "Backend Developer",
+    "summary": {
+      "evaluated": 54,
+      "shortlisted": 10,
+      "score_cutoff_used": 41.1,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "SDE_Resume_1_Aditya_Joshi.pdf",
+        "name": "ADITYA JOSHI",
+        "score": 77.9,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 6/8 required skills directly: Python, Java, SQL, NoSQL.",
+          "Missing 1 required skill(s): Node.js.",
+          "Also matches 3 preferred skill(s): Docker, JWT, Cloud basics."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "SDE_Resume_2_Meera_Pillai.pdf",
+        "name": "MEERA PILLAI",
+        "score": 77.9,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 6/8 required skills directly: Python, Java, SQL, NoSQL.",
+          "Missing 1 required skill(s): Node.js.",
+          "Also matches 3 preferred skill(s): Docker, JWT, Cloud basics."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "Python_Developer_Resume_1_Karan_Malhotra.pdf",
+        "name": "KARAN MALHOTRA",
+        "score": 54.1,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 5/8 required skills directly: Python, REST API design, SQL, Git.",
+          "Missing 2 required skill(s): Node.js, Java.",
+          "Also matches 1 preferred skill(s): Docker."
+        ]
+      },
+      {
+        "rank": 4,
+        "file": "Python_Developer_Resume_2_Ananya_Reddy.pdf",
+        "name": "Ananya Reddy",
+        "score": 54.1,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 5/8 required skills directly: Python, REST API design, SQL, Git.",
+          "Missing 2 required skill(s): Node.js, Java.",
+          "Also matches 1 preferred skill(s): Docker."
+        ]
+      },
+      {
+        "rank": 5,
+        "file": "web_dev__aditya_kulkarni.pdf",
+        "name": "Aditya Kulkarni",
+        "score": 50.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 5/8 required skills directly: Node.js, SQL, NoSQL, Git.",
+          "Missing 2 required skill(s): Python, Java.",
+          "Also matches 1 preferred skill(s): Docker."
+        ]
+      },
+      {
+        "rank": 6,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": "SIDDHARTH RAO",
+        "score": 48.4,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: Python, Git, GitHub.",
+          "Missing 2 required skill(s): Node.js, Java.",
+          "Also matches 1 preferred skill(s): Cloud basics."
+        ]
+      },
+      {
+        "rank": 7,
+        "file": "python_dev__karan_verma.pdf",
+        "name": "Karan Verma",
+        "score": 45.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, REST API design, SQL, Git.",
+          "Missing 3 required skill(s): Node.js, Java, GitHub.",
+          "Also matches 2 preferred skill(s): Docker, Cloud basics."
+        ]
+      },
+      {
+        "rank": 8,
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": "VIKRAM NAIR",
+        "score": 44.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, SQL, Git, GitHub.",
+          "Missing 4 required skill(s): Node.js, Java, REST API design, NoSQL.",
+          "Also matches 1 preferred skill(s): Cloud basics."
+        ]
+      },
+      {
+        "rank": 9,
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": "PRIYA KULKARNI",
+        "score": 44.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, SQL, Git, GitHub.",
+          "Missing 4 required skill(s): Node.js, Java, REST API design, NoSQL.",
+          "Also matches 1 preferred skill(s): Cloud basics."
+        ]
+      },
+      {
+        "rank": 10,
+        "file": "sde__arjun_desai.pdf",
+        "name": "Arjun Desai",
+        "score": 41.1,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, Java, SQL, NoSQL.",
+          "Missing 4 required skill(s): Node.js, REST API design, Git, GitHub.",
+          "Also matches 2 preferred skill(s): Docker, Cloud basics."
+        ]
+      }
+    ],
+    "reserve": [
+      {
+        "file": "python_dev__sneha_reddy.pdf",
+        "name": "Sneha Reddy",
+        "score": 39.9,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: Python, SQL, Git.",
+          "Missing 4 required skill(s): Node.js, Java, NoSQL, GitHub.",
+          "Also matches 2 preferred skill(s): Docker, JWT."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": "KAVYA MENON",
+        "score": 39.4,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: Python, Git, GitHub.",
+          "Missing 2 required skill(s): Node.js, Java.",
+          "Partial/inferred (not explicit) match on: REST API design, SQL, NoSQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_2_Ishita_Gupta.pdf",
+        "name": "ISHITA GUPTA",
+        "score": 39.4,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, SQL, Git, GitHub.",
+          "Missing 3 required skill(s): Node.js, Java, REST API design.",
+          "Partial/inferred (not explicit) match on: NoSQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_1_Nikhil_Desai.pdf",
+        "name": "NIKHIL DESAI",
+        "score": 35.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/8 required skills directly: Python, SQL, Git, GitHub.",
+          "Missing 4 required skill(s): Node.js, Java, REST API design, NoSQL.",
+          "CGPA 9.0 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__ishaan_kapoor.pdf",
+        "name": "Ishaan Kapoor",
+        "score": 34.7,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: Java, SQL, Git.",
+          "Missing 4 required skill(s): Node.js, Python, NoSQL, GitHub.",
+          "Also matches 1 preferred skill(s): Cloud basics."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__ananya_subramanian.pdf",
+        "name": "Ananya Subramanian",
+        "score": 30.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/8 required skills directly: Python, Git, GitHub.",
+          "Missing 5 required skill(s): Node.js, Java, REST API design, SQL.",
+          "Also matches 1 preferred skill(s): Cloud basics."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__rohan_mehta.pdf",
+        "name": "Rohan Mehta",
+        "score": 29.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Python, SQL.",
+          "Missing 5 required skill(s): Node.js, Java, REST API design, Git.",
+          "Also matches 2 preferred skill(s): Docker, Cloud basics."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__nikhil_rao.pdf",
+        "name": "Nikhil Rao",
+        "score": 29.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Python, SQL.",
+          "Missing 5 required skill(s): Node.js, Java, NoSQL, Git.",
+          "Also matches 2 preferred skill(s): Docker, Cloud basics."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__rahul_bose.pdf",
+        "name": "Rahul Bose",
+        "score": 26.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Java, Git.",
+          "Missing 3 required skill(s): Node.js, Python, GitHub.",
+          "Partial/inferred (not explicit) match on: REST API design, SQL, NoSQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_1_Yash_Choudhary.pdf",
+        "name": "Yash Choudhary",
+        "score": 26.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Python, GitHub.",
+          "Missing 4 required skill(s): Node.js, Java, REST API design, Git.",
+          "Partial/inferred (not explicit) match on: SQL, NoSQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_2_Anjali_Bose.pdf",
+        "name": "ANJALI BOSE",
+        "score": 17.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Python, GitHub.",
+          "Missing 6 required skill(s): Node.js, Java, REST API design, SQL.",
+          "CGPA 8.15 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "web_dev__priya_nair.pdf",
+        "name": "Priya Nair",
+        "score": 17.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Node.js, SQL.",
+          "Missing 5 required skill(s): Python, Java, NoSQL, Git.",
+          "Partial/inferred (not explicit) match on: REST API design -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__meera_iyer.pdf",
+        "name": "Meera Iyer",
+        "score": 15.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: Python.",
+          "Missing 7 required skill(s): Node.js, Java, REST API design, SQL.",
+          "Also matches 1 preferred skill(s): Cloud basics."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__divya_pillai.pdf",
+        "name": "Divya Pillai",
+        "score": 15.3,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/8 required skills directly: Python, SQL.",
+          "Missing 6 required skill(s): Node.js, Java, REST API design, NoSQL."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": "Varun Kapoor",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.6 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": "NEHA BHATIA",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.45 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_1_Aman_Tripathi.pdf",
+        "name": "AMAN TRIPATHI",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 9.05 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_2_Shreya_Mehra.pdf",
+        "name": "SHREYA MEHRA",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.65 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_1_Sahil_Khanna.pdf",
+        "name": "SAHIL KHANNA",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.2 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_2_Riya_Singh.pdf",
+        "name": "RIYA SINGH",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.35 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_1_Arjun_Bhatt.pdf",
+        "name": "ARJUN BHATT",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.3 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_2_Tanya_Chauhan.pdf",
+        "name": "TANYA CHAUHAN",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.5 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_1_Rahul_Saxena.pdf",
+        "name": "Rahul Saxena",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.7 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_2_Pooja_Agarwal.pdf",
+        "name": "Pooja Agarwal",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): Node.js, Python, Java, REST API design.",
+          "CGPA 8.4 meets this role's 6.5 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__vikram_singh.pdf",
+        "name": "Vikram Singh",
+        "score": 7.7,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: Python.",
+          "Missing 7 required skill(s): Node.js, Java, REST API design, SQL."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__tanvi_joshi.pdf",
+        "name": "Tanvi Joshi",
+        "score": 6.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): Node.js, Python, Java, SQL.",
+          "Partial/inferred (not explicit) match on: REST API design, Cloud basics -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__kabir_malik.pdf",
+        "name": "Kabir Malik",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__riya_bansal.pdf",
+        "name": "Riya Bansal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__devansh_kothari.pdf",
+        "name": "Devansh Kothari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__ira_sen.pdf",
+        "name": "Ira Sen",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__aarushi_sharma.pdf",
+        "name": "Aarushi Sharma",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__siddharth_rao.pdf",
+        "name": "Siddharth Rao",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__kavya_menon.pdf",
+        "name": "Kavya Menon",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__rajesh_pillai.pdf",
+        "name": "Rajesh Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__deepak_yadav.pdf",
+        "name": "Deepak Yadav",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__farhan_ali.pdf",
+        "name": "Farhan Ali",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__harsh_vardhan.pdf",
+        "name": "Harsh Vardhan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__tanya_kapoor.pdf",
+        "name": "Tanya Kapoor",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__aman_tiwari.pdf",
+        "name": "Aman Tiwari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__neha_choudhary.pdf",
+        "name": "Neha Choudhary",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__sara_khan.pdf",
+        "name": "Sara Khan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__yash_agarwal.pdf",
+        "name": "Yash Agarwal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__manav_chopra.pdf",
+        "name": "Manav Chopra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__pooja_malhotra.pdf",
+        "name": "Pooja Malhotra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 8 required skill(s): Node.js, Python, Java, REST API design."
+        ],
+        "below_cgpa_minimum": false
+      }
+    ],
+    "needs_review": []
+  },
+  "Full Stack Developer": {
+    "jd": "Full Stack Developer",
+    "summary": {
+      "evaluated": 54,
+      "shortlisted": 7,
+      "score_cutoff_used": 33.8,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "web_dev__aditya_kulkarni.pdf",
+        "name": "Aditya Kulkarni",
+        "score": 56.9,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 5/7 required skills directly: React.js, Node.js, Git, GitHub.",
+          "Missing 2 required skill(s): Database, REST APIs.",
+          "Also matches 2 preferred skill(s): CI/CD, GraphQL."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": "SIDDHARTH RAO",
+        "score": 51.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/7 required skills directly: React.js, Database, Git, GitHub.",
+          "Missing 3 required skill(s): Node.js, REST APIs, deployment.",
+          "Also matches 1 preferred skill(s): Firebase."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": "KAVYA MENON",
+        "score": 51.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 4/7 required skills directly: React.js, Database, Git, GitHub.",
+          "Missing 3 required skill(s): Node.js, REST APIs, deployment.",
+          "Also matches 1 preferred skill(s): Firebase."
+        ]
+      },
+      {
+        "rank": 4,
+        "file": "SDE_Resume_1_Aditya_Joshi.pdf",
+        "name": "ADITYA JOSHI",
+        "score": 38.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: Database, Git, GitHub.",
+          "Missing 3 required skill(s): Node.js, REST APIs, deployment.",
+          "Partial/inferred (not explicit) match on: React.js, GraphQL -- flagged, not full credit."
+        ]
+      },
+      {
+        "rank": 5,
+        "file": "SDE_Resume_2_Meera_Pillai.pdf",
+        "name": "MEERA PILLAI",
+        "score": 38.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: Database, Git, GitHub.",
+          "Missing 3 required skill(s): Node.js, REST APIs, deployment.",
+          "Partial/inferred (not explicit) match on: React.js, GraphQL -- flagged, not full credit."
+        ]
+      },
+      {
+        "rank": 6,
+        "file": "Python_Developer_Resume_1_Karan_Malhotra.pdf",
+        "name": "KARAN MALHOTRA",
+        "score": 33.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: Database, Git, GitHub.",
+          "Missing 4 required skill(s): React.js, Node.js, REST APIs, deployment.",
+          "Partial/inferred (not explicit) match on: GraphQL -- flagged, not full credit."
+        ]
+      },
+      {
+        "rank": 7,
+        "file": "Python_Developer_Resume_2_Ananya_Reddy.pdf",
+        "name": "Ananya Reddy",
+        "score": 33.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: Database, Git, GitHub.",
+          "Missing 4 required skill(s): React.js, Node.js, REST APIs, deployment.",
+          "Partial/inferred (not explicit) match on: GraphQL -- flagged, not full credit."
+        ]
+      }
+    ],
+    "reserve": [
+      {
+        "file": "ai_dev__ananya_subramanian.pdf",
+        "name": "Ananya Subramanian",
+        "score": 32.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: Git, GitHub, deployment.",
+          "Missing 4 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Also matches 1 preferred skill(s): CI/CD."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_2_Ishita_Gupta.pdf",
+        "name": "ISHITA GUPTA",
+        "score": 30.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: Database, Git, GitHub.",
+          "Missing 4 required skill(s): React.js, Node.js, REST APIs, deployment.",
+          "CGPA 8.6 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "python_dev__karan_verma.pdf",
+        "name": "Karan Verma",
+        "score": 29.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: Database, Git, deployment.",
+          "Missing 4 required skill(s): React.js, Node.js, REST APIs, GitHub.",
+          "Partial/inferred (not explicit) match on: GraphQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__tanvi_joshi.pdf",
+        "name": "Tanvi Joshi",
+        "score": 27.3,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: React.js, deployment.",
+          "Missing 5 required skill(s): Node.js, Database, REST APIs, Git.",
+          "Also matches 1 preferred skill(s): Firebase."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__rahul_bose.pdf",
+        "name": "Rahul Bose",
+        "score": 20.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: Database, Git.",
+          "Missing 5 required skill(s): React.js, Node.js, REST APIs, GitHub.",
+          "Partial/inferred (not explicit) match on: GraphQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": "VIKRAM NAIR",
+        "score": 20.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: Git, GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.7 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": "PRIYA KULKARNI",
+        "score": 20.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: Git, GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.9 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_1_Nikhil_Desai.pdf",
+        "name": "NIKHIL DESAI",
+        "score": 20.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: Git, GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 9.0 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_1_Yash_Choudhary.pdf",
+        "name": "Yash Choudhary",
+        "score": 20.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: Database, GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, REST APIs, Git.",
+          "CGPA 8.3 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "web_dev__priya_nair.pdf",
+        "name": "Priya Nair",
+        "score": 19.7,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: Node.js.",
+          "Missing 5 required skill(s): Database, REST APIs, Git, GitHub.",
+          "Also matches 1 preferred skill(s): Firebase."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__ishaan_kapoor.pdf",
+        "name": "Ishaan Kapoor",
+        "score": 18.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: Git.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Also matches 1 preferred skill(s): CI/CD."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__rohan_mehta.pdf",
+        "name": "Rohan Mehta",
+        "score": 17.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: Database, deployment.",
+          "Missing 5 required skill(s): React.js, Node.js, REST APIs, Git."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__meera_iyer.pdf",
+        "name": "Meera Iyer",
+        "score": 15.3,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: deployment.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Also matches 1 preferred skill(s): CI/CD."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "python_dev__sneha_reddy.pdf",
+        "name": "Sneha Reddy",
+        "score": 14.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: Git.",
+          "Missing 5 required skill(s): React.js, Node.js, REST APIs, GitHub.",
+          "Partial/inferred (not explicit) match on: Database, GraphQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_1_Rahul_Saxena.pdf",
+        "name": "Rahul Saxena",
+        "score": 12.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Partial/inferred (not explicit) match on: deployment -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_2_Pooja_Agarwal.pdf",
+        "name": "Pooja Agarwal",
+        "score": 12.5,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 5 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Partial/inferred (not explicit) match on: deployment -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__nikhil_rao.pdf",
+        "name": "Nikhil Rao",
+        "score": 12.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: deployment.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Partial/inferred (not explicit) match on: GraphQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__arjun_desai.pdf",
+        "name": "Arjun Desai",
+        "score": 10.9,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: Database.",
+          "Missing 5 required skill(s): React.js, Node.js, REST APIs, Git.",
+          "Partial/inferred (not explicit) match on: deployment -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": "Varun Kapoor",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.6 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": "NEHA BHATIA",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.45 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_1_Aman_Tripathi.pdf",
+        "name": "AMAN TRIPATHI",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 9.05 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_2_Shreya_Mehra.pdf",
+        "name": "SHREYA MEHRA",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.65 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_2_Anjali_Bose.pdf",
+        "name": "ANJALI BOSE",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.15 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_1_Sahil_Khanna.pdf",
+        "name": "SAHIL KHANNA",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.2 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_2_Riya_Singh.pdf",
+        "name": "RIYA SINGH",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.35 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_1_Arjun_Bhatt.pdf",
+        "name": "ARJUN BHATT",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.3 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_2_Tanya_Chauhan.pdf",
+        "name": "TANYA CHAUHAN",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: GitHub.",
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "CGPA 8.5 meets this role's 7.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__manav_chopra.pdf",
+        "name": "Manav Chopra",
+        "score": 2.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 6 required skill(s): React.js, Node.js, Database, REST APIs.",
+          "Partial/inferred (not explicit) match on: deployment -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__kabir_malik.pdf",
+        "name": "Kabir Malik",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__riya_bansal.pdf",
+        "name": "Riya Bansal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__vikram_singh.pdf",
+        "name": "Vikram Singh",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__divya_pillai.pdf",
+        "name": "Divya Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__devansh_kothari.pdf",
+        "name": "Devansh Kothari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__ira_sen.pdf",
+        "name": "Ira Sen",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__aarushi_sharma.pdf",
+        "name": "Aarushi Sharma",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__siddharth_rao.pdf",
+        "name": "Siddharth Rao",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__kavya_menon.pdf",
+        "name": "Kavya Menon",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__rajesh_pillai.pdf",
+        "name": "Rajesh Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__deepak_yadav.pdf",
+        "name": "Deepak Yadav",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__farhan_ali.pdf",
+        "name": "Farhan Ali",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__harsh_vardhan.pdf",
+        "name": "Harsh Vardhan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__tanya_kapoor.pdf",
+        "name": "Tanya Kapoor",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__aman_tiwari.pdf",
+        "name": "Aman Tiwari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__neha_choudhary.pdf",
+        "name": "Neha Choudhary",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__sara_khan.pdf",
+        "name": "Sara Khan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__yash_agarwal.pdf",
+        "name": "Yash Agarwal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__pooja_malhotra.pdf",
+        "name": "Pooja Malhotra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): React.js, Node.js, Database, REST APIs."
+        ],
+        "below_cgpa_minimum": false
+      }
+    ],
+    "needs_review": []
+  },
+  "Database Developer": {
+    "jd": "Database Developer",
+    "summary": {
+      "evaluated": 54,
+      "shortlisted": 3,
+      "score_cutoff_used": 27.1,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "Python_Developer_Resume_1_Karan_Malhotra.pdf",
+        "name": "KARAN MALHOTRA",
+        "score": 39.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: MySQL, PostgreSQL, schema design.",
+          "Missing 4 required skill(s): normalisation, query writing, query optimisation, indexing.",
+          "Also matches 1 preferred skill(s): Redis."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "Python_Developer_Resume_2_Ananya_Reddy.pdf",
+        "name": "Ananya Reddy",
+        "score": 39.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: MySQL, PostgreSQL, schema design.",
+          "Missing 4 required skill(s): normalisation, query writing, query optimisation, indexing.",
+          "Also matches 1 preferred skill(s): Redis."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "sde__ishaan_kapoor.pdf",
+        "name": "Ishaan Kapoor",
+        "score": 27.1,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/7 required skills directly: PostgreSQL, query optimisation.",
+          "Missing 4 required skill(s): schema design, normalisation, query writing, indexing.",
+          "Also matches 1 preferred skill(s): Redis."
+        ]
+      }
+    ],
+    "reserve": [
+      {
+        "file": "python_dev__sneha_reddy.pdf",
+        "name": "Sneha Reddy",
+        "score": 26.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 3/7 required skills directly: MySQL, PostgreSQL, query writing.",
+          "Missing 4 required skill(s): schema design, normalisation, query optimisation, indexing."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "SDE_Resume_1_Aditya_Joshi.pdf",
+        "name": "ADITYA JOSHI",
+        "score": 24.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: MySQL.",
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Also matches 1 preferred skill(s): MongoDB."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "SDE_Resume_2_Meera_Pillai.pdf",
+        "name": "MEERA PILLAI",
+        "score": 24.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: MySQL.",
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Also matches 1 preferred skill(s): MongoDB."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "python_dev__karan_verma.pdf",
+        "name": "Karan Verma",
+        "score": 21.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: PostgreSQL.",
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Also matches 1 preferred skill(s): Redis."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__arjun_desai.pdf",
+        "name": "Arjun Desai",
+        "score": 21.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: MySQL.",
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Also matches 1 preferred skill(s): Redis."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "web_dev__aditya_kulkarni.pdf",
+        "name": "Aditya Kulkarni",
+        "score": 21.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: PostgreSQL.",
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Also matches 1 preferred skill(s): MongoDB."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": "SIDDHARTH RAO",
+        "score": 16.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL, MongoDB -- flagged, not full credit.",
+          "CGPA 8.4 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": "KAVYA MENON",
+        "score": 16.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL, MongoDB -- flagged, not full credit.",
+          "CGPA 8.75 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_2_Ishita_Gupta.pdf",
+        "name": "ISHITA GUPTA",
+        "score": 16.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL, MongoDB -- flagged, not full credit.",
+          "CGPA 8.6 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_1_Yash_Choudhary.pdf",
+        "name": "Yash Choudhary",
+        "score": 16.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL, MongoDB -- flagged, not full credit.",
+          "CGPA 8.3 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__rohan_mehta.pdf",
+        "name": "Rohan Mehta",
+        "score": 14.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL, MongoDB -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__rahul_bose.pdf",
+        "name": "Rahul Bose",
+        "score": 14.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL, MongoDB -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "web_dev__priya_nair.pdf",
+        "name": "Priya Nair",
+        "score": 13.1,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: MySQL.",
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: PostgreSQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": "VIKRAM NAIR",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL -- flagged, not full credit.",
+          "CGPA 8.7 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": "PRIYA KULKARNI",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL -- flagged, not full credit.",
+          "CGPA 8.9 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_1_Nikhil_Desai.pdf",
+        "name": "NIKHIL DESAI",
+        "score": 10.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL -- flagged, not full credit.",
+          "CGPA 9.0 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__divya_pillai.pdf",
+        "name": "Divya Pillai",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__nikhil_rao.pdf",
+        "name": "Nikhil Rao",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): schema design, normalisation, query writing, query optimisation.",
+          "Partial/inferred (not explicit) match on: MySQL, PostgreSQL -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__harsh_vardhan.pdf",
+        "name": "Harsh Vardhan",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/7 required skills directly: indexing.",
+          "Missing 6 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": "Varun Kapoor",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.6 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": "NEHA BHATIA",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.45 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_1_Aman_Tripathi.pdf",
+        "name": "AMAN TRIPATHI",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 9.05 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_2_Shreya_Mehra.pdf",
+        "name": "SHREYA MEHRA",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.65 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_2_Anjali_Bose.pdf",
+        "name": "ANJALI BOSE",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.15 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_1_Sahil_Khanna.pdf",
+        "name": "SAHIL KHANNA",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.2 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_2_Riya_Singh.pdf",
+        "name": "RIYA SINGH",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.35 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_1_Arjun_Bhatt.pdf",
+        "name": "ARJUN BHATT",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.3 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_2_Tanya_Chauhan.pdf",
+        "name": "TANYA CHAUHAN",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.5 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_1_Rahul_Saxena.pdf",
+        "name": "Rahul Saxena",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.7 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_2_Pooja_Agarwal.pdf",
+        "name": "Pooja Agarwal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation.",
+          "CGPA 8.4 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__ananya_subramanian.pdf",
+        "name": "Ananya Subramanian",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__tanvi_joshi.pdf",
+        "name": "Tanvi Joshi",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__kabir_malik.pdf",
+        "name": "Kabir Malik",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__riya_bansal.pdf",
+        "name": "Riya Bansal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__meera_iyer.pdf",
+        "name": "Meera Iyer",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__vikram_singh.pdf",
+        "name": "Vikram Singh",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__devansh_kothari.pdf",
+        "name": "Devansh Kothari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__ira_sen.pdf",
+        "name": "Ira Sen",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__aarushi_sharma.pdf",
+        "name": "Aarushi Sharma",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__siddharth_rao.pdf",
+        "name": "Siddharth Rao",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__kavya_menon.pdf",
+        "name": "Kavya Menon",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__rajesh_pillai.pdf",
+        "name": "Rajesh Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__deepak_yadav.pdf",
+        "name": "Deepak Yadav",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__farhan_ali.pdf",
+        "name": "Farhan Ali",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__tanya_kapoor.pdf",
+        "name": "Tanya Kapoor",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__aman_tiwari.pdf",
+        "name": "Aman Tiwari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__neha_choudhary.pdf",
+        "name": "Neha Choudhary",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__sara_khan.pdf",
+        "name": "Sara Khan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__yash_agarwal.pdf",
+        "name": "Yash Agarwal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__manav_chopra.pdf",
+        "name": "Manav Chopra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__pooja_malhotra.pdf",
+        "name": "Pooja Malhotra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 7 required skill(s): MySQL, PostgreSQL, schema design, normalisation."
+        ],
+        "below_cgpa_minimum": false
+      }
+    ],
+    "needs_review": []
+  },
+  "API Integration Developer": {
+    "jd": "API Integration Developer",
+    "summary": {
+      "evaluated": 54,
+      "shortlisted": 2,
+      "score_cutoff_used": 28.0,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": "SIDDHARTH RAO",
+        "score": 28.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/5 required skills directly: REST API consumption, Postman.",
+          "Missing 3 required skill(s): Swagger, JSON handling, backend language.",
+          "CGPA 8.4 meets this role's 6.0 minimum."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": "KAVYA MENON",
+        "score": 28.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 2/5 required skills directly: REST API consumption, Postman.",
+          "Missing 3 required skill(s): Swagger, JSON handling, backend language.",
+          "CGPA 8.75 meets this role's 6.0 minimum."
+        ]
+      }
+    ],
+    "reserve": [
+      {
+        "file": "python_dev__sneha_reddy.pdf",
+        "name": "Sneha Reddy",
+        "score": 20.1,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language.",
+          "Also matches 1 preferred skill(s): webhook handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "SDE_Resume_1_Aditya_Joshi.pdf",
+        "name": "ADITYA JOSHI",
+        "score": 17.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language.",
+          "Partial/inferred (not explicit) match on: OAuth -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "SDE_Resume_2_Meera_Pillai.pdf",
+        "name": "MEERA PILLAI",
+        "score": 17.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language.",
+          "Partial/inferred (not explicit) match on: OAuth -- flagged, not full credit."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Python_Developer_Resume_1_Karan_Malhotra.pdf",
+        "name": "KARAN MALHOTRA",
+        "score": 14.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language.",
+          "CGPA 9.0 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Python_Developer_Resume_2_Ananya_Reddy.pdf",
+        "name": "Ananya Reddy",
+        "score": 14.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language.",
+          "CGPA 8.5 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__rahul_bose.pdf",
+        "name": "Rahul Bose",
+        "score": 12.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "app_dev__tanvi_joshi.pdf",
+        "name": "Tanvi Joshi",
+        "score": 12.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__nikhil_rao.pdf",
+        "name": "Nikhil Rao",
+        "score": 12.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "python_dev__karan_verma.pdf",
+        "name": "Karan Verma",
+        "score": 12.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__ishaan_kapoor.pdf",
+        "name": "Ishaan Kapoor",
+        "score": 12.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "web_dev__aditya_kulkarni.pdf",
+        "name": "Aditya Kulkarni",
+        "score": 12.2,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/5 required skills directly: REST API consumption.",
+          "Missing 4 required skill(s): Postman, Swagger, JSON handling, backend language."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": "Varun Kapoor",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.6 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": "NEHA BHATIA",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.45 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_1_Vikram_Nair.pdf",
+        "name": "VIKRAM NAIR",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.7 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Cyber_Security_Resume_2_Priya_Kulkarni.pdf",
+        "name": "PRIYA KULKARNI",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.9 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_1_Nikhil_Desai.pdf",
+        "name": "NIKHIL DESAI",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 9.0 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Data_Scientist_Resume_2_Ishita_Gupta.pdf",
+        "name": "ISHITA GUPTA",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.6 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_1_Aman_Tripathi.pdf",
+        "name": "AMAN TRIPATHI",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 9.05 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Founders_Office_Resume_2_Shreya_Mehra.pdf",
+        "name": "SHREYA MEHRA",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.65 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_1_Yash_Choudhary.pdf",
+        "name": "Yash Choudhary",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.3 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "IT_Support_Resume_2_Anjali_Bose.pdf",
+        "name": "ANJALI BOSE",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.15 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_1_Sahil_Khanna.pdf",
+        "name": "SAHIL KHANNA",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.2 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Sales_Resume_2_Riya_Singh.pdf",
+        "name": "RIYA SINGH",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.35 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_1_Arjun_Bhatt.pdf",
+        "name": "ARJUN BHATT",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.3 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Social_Media_Intern_Resume_2_Tanya_Chauhan.pdf",
+        "name": "TANYA CHAUHAN",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.5 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_1_Rahul_Saxena.pdf",
+        "name": "Rahul Saxena",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.7 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "Video_Editing_Resume_2_Pooja_Agarwal.pdf",
+        "name": "Pooja Agarwal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling.",
+          "CGPA 8.4 meets this role's 6.0 minimum."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__ananya_subramanian.pdf",
+        "name": "Ananya Subramanian",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "ai_dev__rohan_mehta.pdf",
+        "name": "Rohan Mehta",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__kabir_malik.pdf",
+        "name": "Kabir Malik",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "content_creation__riya_bansal.pdf",
+        "name": "Riya Bansal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__meera_iyer.pdf",
+        "name": "Meera Iyer",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "cyber_security__vikram_singh.pdf",
+        "name": "Vikram Singh",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "data_scientist__divya_pillai.pdf",
+        "name": "Divya Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__devansh_kothari.pdf",
+        "name": "Devansh Kothari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "design__ira_sen.pdf",
+        "name": "Ira Sen",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__aarushi_sharma.pdf",
+        "name": "Aarushi Sharma",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "founder_s_office__siddharth_rao.pdf",
+        "name": "Siddharth Rao",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__kavya_menon.pdf",
+        "name": "Kavya Menon",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "hr__rajesh_pillai.pdf",
+        "name": "Rajesh Pillai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__deepak_yadav.pdf",
+        "name": "Deepak Yadav",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "it_support__farhan_ali.pdf",
+        "name": "Farhan Ali",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__harsh_vardhan.pdf",
+        "name": "Harsh Vardhan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "marketing__tanya_kapoor.pdf",
+        "name": "Tanya Kapoor",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__aman_tiwari.pdf",
+        "name": "Aman Tiwari",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sales__neha_choudhary.pdf",
+        "name": "Neha Choudhary",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "sde__arjun_desai.pdf",
+        "name": "Arjun Desai",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__sara_khan.pdf",
+        "name": "Sara Khan",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "social_media_intern__yash_agarwal.pdf",
+        "name": "Yash Agarwal",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__manav_chopra.pdf",
+        "name": "Manav Chopra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "video_editing__pooja_malhotra.pdf",
+        "name": "Pooja Malhotra",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      },
+      {
+        "file": "web_dev__priya_nair.pdf",
+        "name": "Priya Nair",
+        "score": 0.0,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Missing 5 required skill(s): REST API consumption, Postman, Swagger, JSON handling."
+        ],
+        "below_cgpa_minimum": false
+      }
+    ],
+    "needs_review": []
+  }
+}

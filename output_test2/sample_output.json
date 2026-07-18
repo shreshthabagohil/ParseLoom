@@ -1,0 +1,67 @@
+{
+  "Frontend Developer": {
+    "jd": "Frontend Developer",
+    "summary": {
+      "evaluated": 4,
+      "shortlisted": 4,
+      "score_cutoff_used": 8.8,
+      "parse_failures": 0
+    },
+    "shortlist": [
+      {
+        "rank": 1,
+        "file": "App_Developer_Resume_1_Siddharth_Rao.pdf",
+        "name": "SIDDHARTH RAO",
+        "score": 68.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "No further distinguishing signal found.",
+          "No further distinguishing signal found."
+        ]
+      },
+      {
+        "rank": 2,
+        "file": "App_Developer_Resume_2_Kavya_Menon.pdf",
+        "name": "KAVYA MENON",
+        "score": 68.6,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 7/8 required skills directly: HTML, CSS, JavaScript, React.js.",
+          "No further distinguishing signal found.",
+          "No further distinguishing signal found."
+        ]
+      },
+      {
+        "rank": 3,
+        "file": "Content_Creation_Resume_1_Varun_Kapoor.pdf",
+        "name": "VARUN KAPOOR",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "No further distinguishing signal found."
+        ]
+      },
+      {
+        "rank": 4,
+        "file": "Content_Creation_Resume_2_Neha_Bhatia.pdf",
+        "name": "NEHA BHATIA",
+        "score": 8.8,
+        "confidence": "High",
+        "parse_quality": "Clean",
+        "reasons": [
+          "Matches 1/8 required skills directly: GitHub.",
+          "Missing 7 required skill(s): HTML, CSS, JavaScript, React.js.",
+          "No further distinguishing signal found."
+        ]
+      }
+    ],
+    "reserve": [],
+    "needs_review": []
+  }
+}
