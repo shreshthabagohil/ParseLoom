@@ -53,6 +53,7 @@ def score_candidate(resume: ParsedResume, jd: JobDescription) -> ScoreResult:
             reasons=["Parse failed -- no reliable data extracted.", *resume.parse_notes[:2]],
             parse_quality="Failed",
             below_cgpa_minimum=False,
+            llm_call_failed=resume.llm_call_failed,
         )
 
     vocab_hits, evidence_text = build_evidence(
@@ -98,7 +99,17 @@ def score_candidate(resume: ParsedResume, jd: JobDescription) -> ScoreResult:
 
     if below_min:
         reasons.append(f"CGPA {resume.cgpa_10pt} is below this role's minimum of {jd.cgpa_min} -- routed to Reserve regardless of score.")
-    if resume.parse_status == "Partial":
+    # Distinct from the generic "partially parsed" message below -- an LLM
+    # call failure is a provider-side problem, not a signal about this
+    # candidate at all. This must be the first/most visible reason so it
+    # can't be mistaken for a real assessment of the resume
+    # (RELIABILITY_SCALE_ANALYSIS.md Section 1.1).
+    if resume.llm_call_failed:
+        reasons.append(
+            "AI extraction failed for this resume (provider error) -- this score and the fields "
+            "below are unreliable, not a real assessment. Re-run once the provider issue clears."
+        )
+    elif resume.parse_status == "Partial":
         reasons.append("Resume only partially parsed -- confidence capped, some signal may be missing.")
     reasons.extend(conflict_notes)
     if matched_required:
@@ -124,4 +135,5 @@ def score_candidate(resume: ParsedResume, jd: JobDescription) -> ScoreResult:
         reasons=reasons,
         parse_quality=resume.parse_status,
         below_cgpa_minimum=below_min,
+        llm_call_failed=resume.llm_call_failed,
     )

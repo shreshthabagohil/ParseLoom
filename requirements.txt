@@ -1,11 +1,30 @@
 PyMuPDF==1.24.11
 pytesseract==0.3.13
-Pillow==10.4.0
-requests==2.32.3
+# Pillow/requests/Flask/Werkzeug/pytest versions bumped 2026-07-20 during
+# Milestone 3's security audit -- `pip-audit -r requirements.txt` found 22
+# known CVEs across the previously-pinned versions (PYSEC-2026-165 and
+# related Pillow image-processing CVEs; PYSEC-2026-1872/2275 in requests;
+# PYSEC-2026-2151 in Flask; several in Werkzeug; PYSEC-2026-1845 in
+# pytest). Bumped to the lowest version pip-audit reported as fixed for
+# each, then the full test suite was re-run to confirm no breakage. See
+# MILESTONE_LOG.md's security-audit entry for the full pip-audit output
+# and confirmation this is now clean.
+Pillow==12.3.0
+requests==2.33.0
 
 # Web UI (Bonus A) -- app.py only, not needed for main.py
-Flask==3.0.3
-Werkzeug==3.0.4
+Flask==3.1.3
+Werkzeug==3.1.6
+# Production WSGI server -- Flask's own app.run() dev server (used only
+# under `if __name__ == "__main__"`, see app.py) is explicitly not
+# production-safe (single-threaded-by-default request handling model,
+# not hardened against real internet traffic). Render (or any real host)
+# runs gunicorn instead, per the Procfile.
+gunicorn==23.0.0
+# Excel export -- lets a user download a run's results as a real, editable
+# .xlsx file. Pure-Python, no native binary dependency, fits this
+# project's "minimal deps" philosophy.
+openpyxl==3.1.5
 
 # Dev/test only -- not needed to run main.py, only for `pytest tests/`
-pytest==8.3.3
+pytest==9.0.3

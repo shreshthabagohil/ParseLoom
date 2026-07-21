@@ -86,6 +86,14 @@ def test_reasons_always_present_even_with_no_signal():
     assert len(result.reasons) >= 1
 
 
+def test_llm_call_failed_flag_passes_through_to_score_result():
+    # Milestone 1 regression: the distinct LLM-failure state must survive
+    # into ScoreResult, not get lost between ParsedResume and the scorer.
+    resume = _resume(parse_status="Partial", llm_call_failed=True, llm_failure_reason="HTTP 429")
+    result = score_candidate(resume, JD)
+    assert result.llm_call_failed is True
+
+
 def test_sparse_resume_scores_lower_than_complete_one():
     complete = score_candidate(_resume(), JD)
     sparse = score_candidate(

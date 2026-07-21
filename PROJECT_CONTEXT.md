@@ -220,6 +220,20 @@ silently bypassed by a code path that forgets to check it.
    never zeroed.
 5. **Confidence:** derived from parse_status (hard cap per Tricky Part
    4) and how implicit-match-heavy the skill matches were.
+6. **Shortlist score floor (added Milestone 5.5 of the rebuild, real bug
+   found in live use):** `build_shortlist()` fills `jd.slots` with the
+   top-scoring eligible candidates, but a candidate scoring exactly `0`
+   (meaning `skill_subscore == 0` — zero required AND zero preferred skill
+   matches; the completeness multiplier in step 4 can't lift a `0`
+   skill_subscore above `0` either way) never occupies a slot, even if
+   slots remain open. Such candidates are still scored and fully visible in
+   Reserve — never hidden — only blocked from a "we recommend this person"
+   slot. `summary.slots_unfilled` reports how many of `jd.slots` genuinely
+   couldn't be filled by a candidate with real skill overlap. Before this
+   fix, a role with few well-matched applicants could show a shortlist
+   padded with zero-overlap candidates just because a slot existed — which
+   directly contradicts the "never produce a confident-looking number it
+   can't back up" principle in Section 10.5.
 
 ## 7. Grade normalization
 

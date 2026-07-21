@@ -7,7 +7,7 @@ in PROJECT_CONTEXT.md.
 
 import json
 
-from ..ai_client import LLMError, call_llm
+from ..ai_client import LLMError, call_llm_with_failover
 
 SYSTEM_PROMPT = """You extract structured data from a student resume. \
 The text has [EMAIL_REDACTED] and [PHONE_REDACTED] placeholders where \
@@ -49,7 +49,12 @@ def extract_structured_fields(redacted_text: str) -> dict:
     Raises LLMError on failure -- the caller is responsible for treating
     that as a Partial parse, not crashing the whole run (Tricky Part 4).
     """
-    raw = call_llm(system=SYSTEM_PROMPT, user=redacted_text, json_mode=True)
+    # Groq first, Gemini as a per-request failover if Groq itself errors --
+    # see src/ai_client.py::call_llm_with_failover and REBUILD_PLAN.md
+    # Milestone 2 for why (Groq's real measured limits make it the primary
+    # lane; Gemini's 20-req/day/model free-tier cap makes it a backstop
+    # only, never a load-bearing second lane).
+    raw = call_llm_with_failover(system=SYSTEM_PROMPT, user=redacted_text, json_mode=True)
     try:
         return json.loads(raw)
     except json.JSONDecodeError as exc:

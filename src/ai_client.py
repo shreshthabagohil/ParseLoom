@@ -43,6 +43,59 @@ def call_llm(
     raise LLMError(f"Unknown AI provider: {provider}")
 
 
+# Groq's free-tier llama-3.3-70b-versatile is 30 RPM / 1,000 RPD / 12,000
+# TPM / 100,000 TPD (measured directly from console.groq.com/docs/rate-limits
+# on 2026-07-20 -- see REBUILD_PLAN.md Section 0). Gemini's free tier is
+# capped at 20 requests/day/model (confirmed via a real 429 mid-hackathon,
+# PROJECT_CONTEXT.md Section 11) -- far too low to be a real second lane for
+# a full batch, so it is deliberately used only as a per-request failover
+# when Groq itself errors, never as a load-bearing concurrent path.
+PRIMARY_PROVIDER_DEFAULT = "groq"
+FALLBACK_PROVIDER_DEFAULT = "gemini"
+
+
+def call_llm_with_failover(
+    system: str,
+    user: str,
+    json_mode: bool = True,
+    primary: str | None = None,
+    fallback: str | None = None,
+) -> str:
+    """
+    Tries `primary` first; if that raises LLMError, tries `fallback` once
+    before giving up. This is the function extraction code should call
+    instead of `call_llm` directly -- `call_llm` remains available as the
+    single-provider primitive (used directly by tests that need to pin a
+    specific provider, and by this function itself).
+
+    If `fallback` is unset/unavailable/same as primary, no failover is
+    attempted and the primary's LLMError propagates unchanged -- this keeps
+    single-provider behavior (e.g. in a test with only one key configured)
+    working exactly as before, with no forced dependency on a second
+    provider being configured.
+    """
+    primary = (primary or os.environ.get("AI_PROVIDER") or PRIMARY_PROVIDER_DEFAULT).lower()
+    fallback = (fallback or os.environ.get("AI_FALLBACK_PROVIDER") or FALLBACK_PROVIDER_DEFAULT).lower()
+
+    try:
+        return call_llm(system=system, user=user, provider=primary, json_mode=json_mode)
+    except LLMError as primary_exc:
+        if not fallback or fallback == primary:
+            raise
+        try:
+            return call_llm(system=system, user=user, provider=fallback, json_mode=json_mode)
+        except LLMError as fallback_exc:
+            # Both failed -- surface both reasons so a human reading
+            # llm_failure_reason later can tell "just Groq was down" apart
+            # from "the whole AI layer is down," which matters for
+            # diagnosing a real outage vs. a single misconfigured provider.
+            raise LLMError(
+                _scrub_secrets(
+                    f"Both providers failed. {primary}: {primary_exc}. {fallback}: {fallback_exc}"
+                )
+            ) from fallback_exc
+
+
 def _call_gemini(system: str, user: str, model: str, json_mode: bool) -> str:
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:

@@ -4,36 +4,55 @@
    ============================================================ */
 
 :root {
-  /* Surfaces */
-  --surface: #23282c;
-  --surface-lowest: #1a1e21;
-  --surface-low: #2c3238;
-  --surface-container: #333a40;
-  --surface-high: #3f474d;
-  --surface-highest: #4a535a;
+  /* ============================================================
+     Palette source: user-selected swatch (row 1, col 4 of the
+     shared 29-palette collection) -- dark brown base, olive-gold,
+     warm gold, pale gold/cream. Deliberately warm/earthy, not the
+     blue-purple-neon "generic AI product" look -- picked explicitly
+     to avoid that, per standing instruction. One palette, used
+     consistently everywhere (UI/UX phase, REBUILD_PROMPT.md Section 6)
+     -- not mixed with anything else.
+     ============================================================ */
+
+  /* Surfaces (dark brown/charcoal base from the swatch, deepened for
+     a dashboard's dark-mode legibility -- the swatch's literal dark
+     brown value only serves as the darkest anchor here) */
+  --surface: #211a14;
+  --surface-lowest: #17120e;
+  --surface-low: #2a2119;
+  --surface-container: #33281e;
+  --surface-high: #3d3024;
+  --surface-highest: #493a2b;
 
   /* Text */
-  --on-surface: #e2e2e2;
-  --on-surface-variant: #c8c5cd;
-  --muted: #929097;
+  --on-surface: #ece5d8;
+  --on-surface-variant: #cdbfa9;
+  --muted: #9c8d78;
 
-  /* Accents */
-  --primary: #c08a5c;          /* teal — primary action */
-  --primary-strong: #d9b48f;
-  --primary-deep: #1a1a2e;     /* deep navy structural, also button text */
-  --periwinkle: #e0b878;       /* warm gold accent (was periwinkle-purple; renamed use, not name, to avoid touching every reference) */
-  --cream: #f2ede4;
+  /* Accents -- olive-gold / warm gold / pale gold, straight from the
+     chosen swatch */
+  --primary: #b3823f;          /* olive-gold — primary action */
+  --primary-strong: #d9a94f;   /* warm gold */
+  --primary-deep: #241a0e;     /* deep brown structural, also button text */
+  --periwinkle: #d9a94f;       /* warm gold accent (legacy variable name, not repurposed as a color meaning -- kept so every existing reference stays correct) */
+  --cream: #f4ecd8;            /* pale gold/cream */
 
-  /* Status hues */
+  /* Status hues (unchanged -- these are semantic, not part of the
+     brand palette, and already avoid purple/neon) */
   --green: #6ee7b7;
   --amber: #fcd34d;
   --red: #ffb4ab;
   --red-deep: #93000a;
 
   /* Lines & glass */
-  --outline: #47464c;
-  --glass: rgba(30, 41, 59, 0.55);
-  --glass-border: rgba(192, 138, 92, 0.28);
+  --outline: #4a3c2c;
+  --glass: rgba(43, 33, 22, 0.55);
+  --glass-border: rgba(179, 130, 63, 0.30);
+
+  /* Cursor-reactive spotlight (UI/UX phase, static/effects.js sets
+     these on :root as the pointer moves) */
+  --cursor-x: 50%;
+  --cursor-y: 50%;
 
   /* Shape */
   --radius-sm: 0.5rem;
@@ -54,14 +73,40 @@ body {
   margin: 0;
   background: var(--surface);
   background-image:
-    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(107, 82, 55, 0.18), transparent),
-    linear-gradient(180deg, #1a1e21 0%, #23282c 30%);
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(179, 130, 63, 0.16), transparent),
+    linear-gradient(180deg, #17120e 0%, #211a14 30%);
   color: var(--on-surface);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.5;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* ============ Cursor-reactive ambient spotlight (UI/UX phase) ============
+   A single fixed layer whose radial-gradient center tracks the pointer,
+   via --cursor-x/--cursor-y (set continuously by static/effects.js).
+   Deliberately subtle and behind all content (z-index -1, pointer-events
+   none) -- an ambient "the page is alive" effect, not a distraction from
+   the actual data. Respects prefers-reduced-motion below. */
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--cursor-x) var(--cursor-y),
+    rgba(217, 169, 79, 0.10),
+    transparent 60%
+  );
+  transition: background 0.05s linear;
+}
+
+.site-header, .page, .site-footer { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-spotlight { display: none; }
 }
 
 /* ============ Header ============ */
@@ -861,4 +906,104 @@ body {
 
   .run-bar { flex-direction: column; align-items: stretch; text-align: center; }
   .run-bar .btn { width: 100%; }
+}
+
+/* ============================================================
+   UI/UX phase: cursor-reactive card interactions
+   ============================================================
+   Aceternity-UI-style effects (studied as visual/interaction reference,
+   hand-ported to plain CSS/JS -- no React/Framer Motion, keeps the
+   existing Flask+Jinja+vanilla-JS architecture exactly as-is, per the
+   explicit decision made before this phase started). Two effects:
+   (1) an animated rotating conic-gradient border, shown on hover;
+   (2) a subtle pointer-driven 3D tilt, applied by static/effects.js via
+   inline transform on mousemove -- this section only supplies the
+   supporting perspective/transform-style base and the border animation,
+   the tilt math itself lives in JS since it needs real-time pointer
+   coordinates. */
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card, .candidate-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card::after,
+.candidate-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0%,
+    var(--primary-strong) 15%,
+    transparent 30%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  animation: border-spin 3.5s linear infinite;
+}
+
+.card:hover::after,
+.candidate-card:hover::after {
+  opacity: 1;
+}
+
+@keyframes border-spin {
+  to { --border-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card::after, .candidate-card::after { animation: none; opacity: 0 !important; }
+  .card, .candidate-card { transition: none !important; }
+}
+
+/* Native <progress> doesn't reliably animate its own value transitions
+   across browsers, so the visual smoothing lives on the bar's fill via
+   a CSS transition where supported, plus a light shimmer sweep so
+   progress reads as continuous motion rather than discrete jumps
+   between polling ticks (every ~1.5s, per pollJob() in index.html). */
+progress#progress-bar {
+  height: 8px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: none;
+  background: var(--surface-container);
+}
+
+progress#progress-bar::-webkit-progress-bar {
+  background: var(--surface-container);
+  border-radius: 9999px;
+}
+
+progress#progress-bar::-webkit-progress-value {
+  background: linear-gradient(90deg, var(--primary), var(--primary-strong));
+  border-radius: 9999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+progress#progress-bar::-moz-progress-bar {
+  background: linear-gradient(90deg, var(--primary), var(--primary-strong));
+  border-radius: 9999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#progress-label {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  letter-spacing: 0.03em;
 }

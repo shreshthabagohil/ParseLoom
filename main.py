@@ -17,73 +17,10 @@ from src.env_loader import load_env
 load_env()
 
 from src import jd_loader  # noqa: E402
-from src.ai_client import LLMError  # noqa: E402
-from src.extraction.grade_normalizer import normalize as normalize_grade  # noqa: E402
-from src.extraction.grade_normalizer import find_and_normalize_from_raw_text  # noqa: E402
-from src.extraction.llm_extract import extract_structured_fields  # noqa: E402
-from src.extraction.pdf_reader import extract  # noqa: E402
-from src.extraction.pii_redact import extract_contact_and_redact  # noqa: E402
 from src.matching.scorer import score_candidate  # noqa: E402
 from src.matching.shortlist import build_shortlist  # noqa: E402
-from src.models import ParsedResume  # noqa: E402
 from src.output.report import write_parse_quality_report, write_sample_output  # noqa: E402
-
-
-def parse_one_resume(path: str) -> ParsedResume:
-    file_name = os.path.basename(path)
-    raw_text, method, notes = extract(path)
-    word_count = len(raw_text.split())
-
-    resume = ParsedResume(
-        file_name=file_name,
-        raw_text=raw_text,
-        parse_method=method,
-        parse_notes=list(notes),
-        text_word_count=word_count,
-    )
-
-    if method == "failed":
-        resume.parse_status = "Failed"
-        return resume
-
-    email, phone, redacted = extract_contact_and_redact(raw_text)
-    resume.email = email
-    resume.phone = phone
-
-    try:
-        fields = extract_structured_fields(redacted)
-    except LLMError as exc:
-        resume.parse_status = "Partial"
-        resume.parse_notes.append(f"LLM extraction failed, falling back to partial signal: {exc}")
-        return resume
-
-    resume.full_name = fields.get("full_name")
-    resume.college = fields.get("college")
-    resume.degree_branch = fields.get("degree_branch")
-    resume.graduation_year = fields.get("graduation_year")
-    resume.skills = fields.get("skills") or []
-    resume.projects = fields.get("projects") or []
-    resume.experience = fields.get("experience") or []
-    resume.certifications = fields.get("certifications") or []
-
-    grade = normalize_grade(fields.get("cgpa_raw_text") or "")
-    if grade.cgpa_10pt is None:
-        fallback = find_and_normalize_from_raw_text(raw_text)
-        if fallback.cgpa_10pt is not None:
-            grade = fallback
-            resume.parse_notes.append(
-                "CGPA recovered via deterministic fallback scan of the full resume text "
-                "(the LLM extraction step didn't return a cgpa_raw_text value)."
-            )
-    resume.cgpa_10pt = grade.cgpa_10pt
-    resume.cgpa_source_format = grade.source_format
-    if grade.note:
-        resume.parse_notes.append(grade.note)
-
-    missing_core = sum(1 for v in [resume.full_name, resume.cgpa_10pt] if v is None) + (0 if resume.skills else 1)
-    resume.parse_status = "Partial" if (method == "ocr" or missing_core >= 2) else "Clean"
-
-    return resume
+from src.pipeline import parse_one_resume, summarize_llm_failures  # noqa: E402
 
 
 def main():
@@ -107,6 +44,10 @@ def main():
     for i, path in enumerate(pdf_paths, 1):
         print(f"  [{i}/{len(pdf_paths)}] {os.path.basename(path)}")
         resumes.append(parse_one_resume(path))
+
+    llm_warning = summarize_llm_failures(resumes)
+    if llm_warning:
+        print(f"\n!!! WARNING: {llm_warning['message']}\n", file=sys.stderr)
 
     if args.all_jds:
         jd_keys = jd_loader.all_known_jd_keys()

@@ -1,0 +1,78 @@
+{
+  "_comment": "Milestone 6 (REBUILD_PLAN.md) -- 8 fixtures, expected values recorded by manually reading each PDF's real text (see the session's fixture-selection notes in MILESTONE_LOG.md for exactly how). 7 are real resumes from data/real_resumes/ (the actual hackathon dataset); 1 (mock_cgpa_percentage) is synthetic, explicitly marked 'source': 'synthetic' below, not passed off as real -- included because PROJECT_CONTEXT.md Section 11 confirms no percentage-format CGPA exists anywhere in the real 54-resume dataset, so a percentage-format case can't be sourced from real data at all.",
+  "_expected_skills_note": "expected_skills is a reasonable, non-exhaustive subset of what's actually listed on each resume (a judgment call, per REBUILD_PLAN.md's Milestone 6 scope) -- the clearest, least-ambiguous skill tokens most likely to be correctly extracted by a competent reader, not every granular item on the page. Skill recall is computed case-insensitively with substring containment in either direction (e.g. 'React' matches an extracted 'React.js'), since exact string equality would unfairly fail on reasonable rephrasing that isn't actually a miss.",
+  "fixtures": [
+    {
+      "file": "data/real_resumes/sde__arjun_desai.pdf",
+      "source": "real",
+      "layout": "single-column",
+      "notes": "No CGPA/GPA/percentage anywhere on this resume (education line is just 'B.Tech, Computer Science -- IIIT Hyderabad, 2016-2020') -- expected_cgpa_10pt is null on purpose, this fixture is here for name/skill accuracy, not CGPA accuracy.",
+      "expected_full_name": "Arjun Desai",
+      "expected_cgpa_10pt": null,
+      "expected_skills": ["Java", "Python", "Kafka", "AWS", "Docker", "Kubernetes", "MySQL", "Microservices"]
+    },
+    {
+      "file": "data/real_resumes/python_dev__sneha_reddy.pdf",
+      "source": "real",
+      "layout": "single-column",
+      "notes": "No CGPA/GPA/percentage on this resume either -- same reasoning as above.",
+      "expected_full_name": "Sneha Reddy",
+      "expected_cgpa_10pt": null,
+      "expected_skills": ["Python", "Django", "PostgreSQL", "Pandas", "NumPy", "Docker", "Git"]
+    },
+    {
+      "file": "data/real_resumes/App_Developer_Resume_1_Siddharth_Rao.pdf",
+      "source": "real",
+      "layout": "two-column",
+      "notes": "PyMuPDF block-position check confirms this triggers the genuine two-column split path in src/extraction/pdf_reader.py::_column_aware_text (verified locally this session, not assumed). CGPA stated plainly as 'CGPA: 8.4 / 10.0'.",
+      "expected_full_name": "Siddharth Rao",
+      "expected_cgpa_10pt": 8.4,
+      "expected_skills": ["Dart", "Flutter", "React Native", "Firebase", "Kotlin", "JavaScript", "Git", "REST"]
+    },
+    {
+      "file": "data/real_resumes/Data_Scientist_Resume_1_Nikhil_Desai.pdf",
+      "source": "real",
+      "layout": "two-column",
+      "notes": "Confirmed two-column via the same local block-position check. CGPA stated plainly as 'CGPA: 9.0 / 10.0'.",
+      "expected_full_name": "Nikhil Desai",
+      "expected_cgpa_10pt": 9.0,
+      "expected_skills": ["Python", "R", "SQL", "Scikit-learn", "Pandas", "Tableau", "Power BI", "Matplotlib"]
+    },
+    {
+      "file": "data/real_resumes/Cyber_Security_Resume_1_Vikram_Nair.pdf",
+      "source": "real",
+      "layout": "two-column",
+      "notes": "Confirmed two-column via the same local block-position check. CGPA stated plainly as 'CGPA: 8.7 / 10.0'.",
+      "expected_full_name": "Vikram Nair",
+      "expected_cgpa_10pt": 8.7,
+      "expected_skills": ["Python", "Nmap", "Wireshark", "Burp Suite", "Metasploit", "Linux", "Cryptography"]
+    },
+    {
+      "file": "data/real_resumes/web_dev__aditya_kulkarni.pdf",
+      "source": "real",
+      "layout": "single-column",
+      "notes": "No CGPA/GPA/percentage present (education line is just 'B.Tech, Computer Science -- COEP Pune, 2016-2020').",
+      "expected_full_name": "Aditya Kulkarni",
+      "expected_cgpa_10pt": null,
+      "expected_skills": ["JavaScript", "TypeScript", "React", "Node.js", "MongoDB", "PostgreSQL", "Docker", "GraphQL"]
+    },
+    {
+      "file": "data/real_resumes/data_scientist__divya_pillai.pdf",
+      "source": "real",
+      "layout": "single-column",
+      "notes": "No CGPA/GPA/percentage present (M.Sc/B.Sc lines have no grade at all).",
+      "expected_full_name": "Divya Pillai",
+      "expected_cgpa_10pt": null,
+      "expected_skills": ["Python", "Pandas", "Scikit-learn", "SQL", "Tableau", "Power BI", "Machine learning"]
+    },
+    {
+      "file": "data/mock_resumes/mock_cgpa_percentage.pdf",
+      "source": "synthetic",
+      "layout": "single-column",
+      "notes": "SYNTHETIC, not a real hackathon-dataset resume -- included specifically because PROJECT_CONTEXT.md Section 11 confirms zero percentage-format CGPA strings exist anywhere in the real 54-resume dataset. Resume states 'Percentage: 82%'; PROJECT_CONTEXT.md Section 7's formula is cgpa = value / 9.5 = 82 / 9.5 = 8.6315..., rounds to 8.63 -- matches the already-documented synthetic verification in PROJECT_CONTEXT.md Section 11.5 ('82% -> 8.63, percentage').",
+      "expected_full_name": "Rohit Sharma",
+      "expected_cgpa_10pt": 8.63,
+      "expected_skills": ["Python", "JavaScript", "React", "Node.js", "SQL", "Git", "REST API"]
+    }
+  ]
+}

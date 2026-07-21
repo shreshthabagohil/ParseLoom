@@ -14,3 +14,8 @@ venv/
 output/*
 !output/sample_output.json
 !output/parse_quality_report.md
+
+# Milestone 4: persistent run history DB. Runtime data, not a submission
+# deliverable, and it contains real uploaded candidates' extracted data --
+# same reasoning as data/real_resumes/ above, never committed.
+instance/

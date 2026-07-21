@@ -11,6 +11,11 @@
 </head>
 <body id="top">
 
+  <!-- UI/UX phase: purely visual cursor effects, deliberately loaded as
+       its own file, separate from the app-logic tag further down this
+       page (see static/effects.js's own header comment). -->
+  <script src="{{ url_for('static', filename='effects.js') }}" defer></script>
+
   <!-- ============ Header ============ -->
   <header class="site-header">
     <div class="header-inner">
@@ -131,7 +136,28 @@
 
     <!-- ============ Status / errors ============ -->
     <div id="status" class="status" role="status" aria-live="polite"></div>
+    <!-- Milestone 3: a real progress element, driven by /api/run/<id>/status
+         polling -- replaces the old static "expect a few seconds..." string
+         with actual N/M progress. Deliberately unstyled/basic (Section 1 of
+         REBUILD_PROMPT.md): visual treatment is a separately-scoped later
+         phase, this is only here to prove the underlying data is real. -->
+    <div id="progress-wrap" style="display:none; margin: 8px 0;" data-testid="progress-wrap">
+      <progress id="progress-bar" data-testid="progress-bar" max="100" value="0" style="width:100%;"></progress>
+      <span id="progress-label" data-testid="progress-label"></span>
+    </div>
     <div id="error" class="error" role="alert"></div>
+
+    <!-- ============ Past Runs (Milestone 4) ============ -->
+    <!-- Deliberately unstyled/basic, same convention as the progress
+         element above: visual treatment is a separately-scoped later
+         phase (Section 1 of REBUILD_PROMPT.md), this just proves the
+         underlying persistence is real and reachable. Lets a user come
+         back "5 days later or 10 days later" and reopen any past run
+         for this browser, per the user's explicit request. -->
+    <section id="past-runs-section" style="margin: 24px 0;">
+      <h3 class="results-section-heading">Past Runs (this browser)</h3>
+      <div id="past-runs-list" data-testid="past-runs-list"><p class="results-empty">Loading…</p></div>
+    </section>
 
     <!-- ============ Results ============ -->
     <section class="results-section">
@@ -167,6 +193,30 @@
     const runBtn = document.getElementById('run-btn');
     const fileInput = document.getElementById('resume-files');
     const fileSelectedText = document.getElementById('file-selected-text');
+
+    // Milestone 4: a per-browser, randomly generated ID that scopes
+    // persistent run history to this browser only -- never a real login,
+    // just enough to stop one public-site visitor from browsing another
+    // visitor's uploaded resume data (see src/history.py's module
+    // docstring for the full reasoning). Generated once and kept in
+    // localStorage so it's stable across page loads/tabs on this
+    // browser, but a brand-new browser/profile/incognito session gets
+    // its own ID and starts with no visible history -- that's correct,
+    // not a bug: there's no server-side account to log back into.
+    const CLIENT_ID_KEY = 'parseloom_client_id';
+    function getOrCreateClientId() {
+      let id = localStorage.getItem(CLIENT_ID_KEY);
+      if (id && /^[a-zA-Z0-9_-]{8,64}$/.test(id)) return id;
+      // crypto.randomUUID() isn't available on very old browsers; fall
+      // back to a simple random hex string in that case. Either way the
+      // result matches app.py's CLIENT_ID_PATTERN (alnum/-/_ , 8-64 chars).
+      id = (window.crypto && crypto.randomUUID)
+        ? crypto.randomUUID().replace(/-/g, '')
+        : Array.from({ length: 32 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
+      localStorage.setItem(CLIENT_ID_KEY, id);
+      return id;
+    }
+    const clientId = getOrCreateClientId();
 
     fileInput.addEventListener('change', () => {
       const n = fileInput.files.length;
@@ -207,15 +257,24 @@
       const reasons = (c.reasons || []).map(r => `<li>${r}</li>`).join('');
       const cgpaFlag = withCgpaFlag && c.below_cgpa_minimum
         ? `<span class="badge badge-low">Below CGPA min</span>` : '';
+      // Milestone 1: structurally distinct from a normal Partial/Failed
+      // badge -- a resume in this state was NOT actually assessed, the AI
+      // provider call itself errored. Must never be visually confusable
+      // with a real (if thin) result.
+      const llmFailureBadge = c.llm_call_failed
+        ? `<span class="badge badge-llm-failed" data-testid="llm-failure-badge">AI extraction failed</span>` : '';
       // Full detail lives on its own page now, not expanded inline --
-      // opens in a new tab (target="_blank", no rel="noopener") so it
-      // keeps this results view untouched and still has access to the
-      // same sessionStorage data (same-origin new tabs inherit a clone
-      // of it). Only link it if this candidate actually has detail data
+      // opens in a new tab (target="_blank") so it keeps this results
+      // view untouched. Run data is read back out of localStorage (not
+      // sessionStorage -- sessionStorage cloning into a new tab isn't
+      // reliable across browsers, notably Safari, which is what broke
+      // this originally). localStorage is shared across all same-origin
+      // tabs unconditionally, so the detail page just reads it directly.
+      // Only link it if this candidate actually has detail data
       // (parse failures never get an entry -- see app.py's /api/run).
       const hasDetail = details && details[c.file];
       const detailLink = hasDetail
-        ? `<a href="/candidate?file=${encodeURIComponent(c.file)}" target="_blank" class="btn btn-sm detail-toggle">View full details ↗</a>`
+        ? `<button type="button" class="btn btn-sm detail-toggle" data-detail-url="/candidate?file=${encodeURIComponent(c.file)}">View full details ↗</button>`
         : '';
       return `
         <article class="candidate-card">
@@ -233,6 +292,7 @@
             <span class="badge badge-${(c.confidence||'').toLowerCase()}">Confidence: ${c.confidence}</span>
             <span class="badge badge-${(c.parse_quality||'').toLowerCase()}">Parse: ${c.parse_quality}</span>
             ${cgpaFlag}
+            ${llmFailureBadge}
           </div>
           <ul class="candidate-reasons">${reasons}</ul>
           ${detailLink}
@@ -242,9 +302,45 @@
     function renderResults(payload) {
       const r = payload.result;
       const details = payload.details || {};
-      detailIdCounter = 0;
-      let html = `<h2 class="results-jd-heading">${payload.jd}</h2>`;
-      html += `<p class="results-summary">Evaluated ${r.summary.evaluated} · Shortlisted ${r.summary.shortlisted} · Cutoff ${r.summary.score_cutoff_used} · Parse failures ${r.summary.parse_failures}</p>`;
+      let html = '';
+      // Milestone 1: rendered above everything else in the results view,
+      // deliberately not folded into a per-card badge -- if a large share
+      // of the batch failed at the AI-provider level, that needs to be the
+      // first thing a user sees, not something they piece together card by
+      // card. Plain, unstyled banner element for now (Section 1: visual
+      // treatment is a later, separately-scoped phase).
+      if (payload.llm_warning) {
+        html += `<div class="llm-batch-warning" role="alert" data-testid="llm-batch-warning" style="border:2px solid; padding:12px; margin-bottom:16px;">⚠ ${payload.llm_warning.message}</div>`;
+      }
+      html += `<h2 class="results-jd-heading">${payload.jd}</h2>`;
+      // Download-as-Excel: the user asked for this explicitly -- every
+      // candidate's full data (shortlist, reserve, needs review, detail
+      // fields) as a real, editable .xlsx file, independent of this web
+      // app. A plain link straight to the export route, no JS build step
+      // needed -- the browser just downloads whatever the server streams
+      // back. Only shown once a job_id is known (i.e. this is a real
+      // finished run, not a restored-from-localStorage view of a run
+      // whose job_id wasn't saved -- see the job_id existence check).
+      // Milestone 4: a reopened historical run needs its export link to
+      // point at /api/runs/<id>/export.xlsx (with client_id) instead of
+      // the live-job /api/run/<id>/export.xlsx route, since by the time
+      // it's reopened the in-memory job is long gone (JobStore has a TTL)
+      // -- only persistent history still has it. export_url is set
+      // explicitly by whichever code path produced this payload (see
+      // pollJob() for a live run, loadPastRun() for a historical one)
+      // rather than guessed here from job_id alone.
+      if (payload.export_url) {
+        html += `<p><a class="btn btn-sm" href="${payload.export_url}" data-testid="export-xlsx-link">⬇ Download as Excel (.xlsx)</a></p>`;
+      }
+      // Milestone 5.5: slots_unfilled surfaced plainly in the same summary
+      // line as every other summary field -- when > 0 it means the JD had
+      // open slots no candidate with real skill overlap could fill, which
+      // is meaningfully different from "this role just wasn't very
+      // competitive" and should be as visible as the other counts here,
+      // not buried in the Excel export only.
+      const slotsUnfilled = r.summary.slots_unfilled ?? 0;
+      const slotsUnfilledText = slotsUnfilled > 0 ? ` · Slots unfilled (no real skill-overlap candidate) ${slotsUnfilled}` : '';
+      html += `<p class="results-summary">Evaluated ${r.summary.evaluated} · Shortlisted ${r.summary.shortlisted} · Cutoff ${r.summary.score_cutoff_used} · Parse failures ${r.summary.parse_failures} · AI extraction failures ${r.summary.llm_extraction_failures ?? 0}${slotsUnfilledText}</p>`;
 
       html += `<h3 class="results-section-heading">Shortlist</h3>`;
       html += r.shortlist.length
@@ -272,10 +368,97 @@
       resultsEl.innerHTML = html;
     }
 
+    // Delegated click handler for "View full details" buttons. Opens
+    // via window.open() (script-initiated) rather than a plain
+    // target="_blank" link -- browsers reliably allow a script-opened
+    // tab to be closed with window.close() from inside itself, but
+    // largely refuse to let a plain user-clicked link's tab do that.
+    // That distinction is what makes the /candidate page's "Back to
+    // results" button able to actually close itself and return focus
+    // to this tab, instead of just navigating.
+    resultsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.detail-toggle');
+      if (!btn) return;
+      window.open(btn.dataset.detailUrl, '_blank');
+    });
+
+    const progressWrap = document.getElementById('progress-wrap');
+    const progressBar = document.getElementById('progress-bar');
+    const progressLabel = document.getElementById('progress-label');
+
+    function showProgress(completed, total) {
+      progressWrap.style.display = '';
+      const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+      progressBar.value = pct;
+      progressLabel.textContent = ` ${completed}/${total} resumes parsed…`;
+    }
+
+    function hideProgress() {
+      progressWrap.style.display = 'none';
+    }
+
+    // Renders whatever candidates have completed so far, while a job is
+    // still running -- this is the "8 move forward and show, others join
+    // as they finish" behavior: candidates appear here progressively via
+    // polling, not all at once at the end. No "view details" links yet
+    // (that data only exists once the job is fully done and /result is
+    // fetched), and no Shortlist/Reserve grouping yet either -- just a
+    // flat, honest "here's what's finished so far" list.
+    function renderInProgress(candidates) {
+      if (!candidates.length) {
+        resultsEl.innerHTML = '<p class="results-empty">Waiting for the first resume to finish…</p>';
+        return;
+      }
+      const sorted = [...candidates].sort((a, b) => (b.score ?? -1) - (a.score ?? -1));
+      resultsEl.innerHTML = sorted.map(c => renderCandidate(c, false, null)).join('');
+    }
+
+    // Milestone 3: polls /api/run/<job_id>/status every ~1.5s. Deliberately
+    // NOT Server-Sent Events -- polling is simpler to get right at this
+    // scale and matches WEB_APP_PLAN.md's own "minimum viable: polling"
+    // framing. Resolves with the final /result payload once the job is done.
+    async function pollJob(jobId, total) {
+      const POLL_INTERVAL_MS = 1500;
+      while (true) {
+        const statusResp = await fetch(`/api/run/${jobId}/status`);
+        const status = await statusResp.json();
+        if (!statusResp.ok) {
+          throw new Error(status.error || 'Lost track of this job.');
+        }
+
+        showProgress(status.completed, status.total || total);
+        renderInProgress(status.candidates_so_far || []);
+
+        if (status.status === 'done') {
+          const resultResp = await fetch(`/api/run/${jobId}/result`);
+          const resultData = await resultResp.json();
+          if (!resultResp.ok) throw new Error(resultData.error || 'Could not load the finished result.');
+          // job_id isn't part of the JSON /result body itself (that's the
+          // same shape the CLI's sample_output.json has, deliberately not
+          // web-specific) -- stashed onto the object here so the results
+          // view can build an Excel-export download link without a
+          // separate lookup.
+          resultData.job_id = jobId;
+          resultData.export_url = `/api/run/${jobId}/export.xlsx`;
+          return resultData;
+        }
+        if (status.status === 'error') {
+          const resultResp = await fetch(`/api/run/${jobId}/result`);
+          const resultData = await resultResp.json();
+          throw new Error(resultData.error || 'This batch failed.');
+        }
+
+        await new Promise(resolve => setTimeout(resolve, POLL_INTERVAL_MS));
+      }
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorEl.textContent = '';
-      resultsEl.innerHTML = '';
+      // Per the user's explicit requirement: results are not cleared just
+      // because a new run started polling -- they're only replaced once
+      // real new data (progress or a finished result) actually arrives,
+      // so the view never flashes empty mid-run.
 
       const jdSelect = document.getElementById('jd-select').value;
       const jdText = document.getElementById('jd-text').value.trim();
@@ -294,26 +477,33 @@
       const formData = new FormData();
       for (const f of files) formData.append('resumes', f);
       formData.append('jd', jdValue);
+      formData.append('client_id', clientId);
 
       runBtn.disabled = true;
-      statusEl.textContent = `Parsing ${files.length} resume(s) and scoring against the JD — this calls a real LLM per resume, expect a few seconds per file...`;
+      statusEl.textContent = `Starting batch: ${files.length} resume(s)…`;
 
       try {
-        const resp = await fetch('/api/run', { method: 'POST', body: formData });
-        const data = await resp.json();
-        if (!resp.ok) {
-          errorEl.textContent = data.error || 'Something went wrong.';
-        } else {
-          statusEl.textContent = '';
-          // Saved so (a) the /candidate page, opened in a new tab, can
-          // read the same data back out without a second network round
-          // trip, and (b) this page restores its own last results below
-          // if the browser is closed/reopened to this tab or refreshed
-          // mid-demo -- results don't just vanish.
-          sessionStorage.setItem('parseloom_last_run', JSON.stringify(data));
-          renderResults(data);
+        const startResp = await fetch('/api/run', { method: 'POST', body: formData });
+        const startData = await startResp.json();
+        if (!startResp.ok) {
+          errorEl.textContent = startData.error || 'Something went wrong.';
+          return;
         }
+
+        statusEl.textContent = '';
+        const finalData = await pollJob(startData.job_id, startData.total);
+
+        hideProgress();
+        // Saved so (a) the /candidate page, opened in a new tab, can read
+        // the same data back out without a second network round trip, and
+        // (b) this page restores its own last results below if the
+        // browser is closed/reopened to this tab or refreshed mid-demo --
+        // results don't just vanish.
+        localStorage.setItem('parseloom_last_run', JSON.stringify(finalData));
+        renderResults(finalData);
+        loadPastRuns(); // the just-finished run should appear immediately, not just after a manual refresh
       } catch (err) {
+        hideProgress();
         errorEl.textContent = 'Request failed: ' + err;
       } finally {
         runBtn.disabled = false;
@@ -324,14 +514,84 @@
     // coming back from the /candidate detail tab) instead of showing an
     // empty results section that looks like the run never happened.
     (function restoreLastRun() {
-      const saved = sessionStorage.getItem('parseloom_last_run');
+      const saved = localStorage.getItem('parseloom_last_run');
       if (!saved) return;
       try {
         renderResults(JSON.parse(saved));
       } catch (err) {
-        sessionStorage.removeItem('parseloom_last_run');
+        localStorage.removeItem('parseloom_last_run');
       }
     })();
+
+    // Milestone 4: Past Runs list -- lets a user come back later and
+    // reopen any completed run for this browser (this app has no login,
+    // so "this browser" via clientId is the only notion of "mine" that
+    // exists -- see the client_id docs above).
+    const pastRunsListEl = document.getElementById('past-runs-list');
+
+    function formatRunTimestamp(unixSeconds) {
+      try {
+        return new Date(unixSeconds * 1000).toLocaleString();
+      } catch (err) {
+        return '';
+      }
+    }
+
+    async function loadPastRuns() {
+      try {
+        const resp = await fetch(`/api/runs?client_id=${encodeURIComponent(clientId)}`);
+        const data = await resp.json();
+        const runs = data.runs || [];
+        if (!runs.length) {
+          pastRunsListEl.innerHTML = '<p class="results-empty">No past runs yet on this browser.</p>';
+          return;
+        }
+        pastRunsListEl.innerHTML = runs.map(run => `
+          <button type="button" class="btn btn-sm past-run-item" data-run-id="${run.id}" style="display:block; margin:4px 0; text-align:left;">
+            ${run.jd_role} — ${run.resume_count} resume(s) — ${formatRunTimestamp(run.created_at)}
+          </button>`).join('');
+      } catch (err) {
+        pastRunsListEl.innerHTML = '<p class="results-empty">Could not load past runs.</p>';
+      }
+    }
+
+    pastRunsListEl.addEventListener('click', async (e) => {
+      const btn = e.target.closest('.past-run-item');
+      if (!btn) return;
+      const runId = btn.dataset.runId;
+      errorEl.textContent = '';
+      try {
+        const resp = await fetch(`/api/runs/${encodeURIComponent(runId)}?client_id=${encodeURIComponent(clientId)}`);
+        const data = await resp.json();
+        if (!resp.ok) {
+          errorEl.textContent = data.error || 'Could not load that run.';
+          return;
+        }
+        data.export_url = `/api/runs/${encodeURIComponent(runId)}/export.xlsx?client_id=${encodeURIComponent(clientId)}`;
+        // Milestone 5 follow-up fix: a reopened historical run's "View full
+        // details" buttons open /candidate?file=..., but candidate.html
+        // reads its data exclusively from localStorage['parseloom_last_run']
+        // -- it has no other way to fetch a specific run, by design (see
+        // candidate.html's own comment: deliberately stateless, no second
+        // network request). The live-run path (form submit handler above)
+        // already writes finished results there; this path didn't, so
+        // opening a candidate's detail page from a reopened past run showed
+        // either stale data from an earlier live run this session, or
+        // "Candidate not found" if none had happened yet. Same fix as the
+        // live path: persist the exact payload this tab is about to render,
+        // so candidate.html has the real thing to read regardless of
+        // whether the currently-displayed results came from a fresh run or
+        // a reopened one.
+        localStorage.setItem('parseloom_last_run', JSON.stringify(data));
+        hideProgress();
+        renderResults(data);
+        window.scrollTo({ top: resultsEl.offsetTop - 40, behavior: 'smooth' });
+      } catch (err) {
+        errorEl.textContent = 'Request failed: ' + err;
+      }
+    });
+
+    loadPastRuns();
   </script>
 
 </body>

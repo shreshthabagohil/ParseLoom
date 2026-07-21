@@ -15,7 +15,7 @@ _dict_to_jd-equivalent construction in jd_loader.py works unchanged.
 
 import json
 
-from .ai_client import LLMError, call_llm
+from .ai_client import LLMError, call_llm_with_failover
 from .models import JobDescription
 
 SYSTEM_PROMPT = """You extract a structured job description from raw, \
@@ -55,7 +55,9 @@ def extract_jd_from_text(raw_text: str) -> JobDescription:
     an unparseable free-text JD as a hard error, not silently proceed
     with an empty JD.
     """
-    raw = call_llm(system=SYSTEM_PROMPT, user=raw_text, json_mode=True)
+    # Same Groq-primary/Gemini-failover pattern as resume extraction --
+    # see src/ai_client.py::call_llm_with_failover.
+    raw = call_llm_with_failover(system=SYSTEM_PROMPT, user=raw_text, json_mode=True)
     try:
         fields = json.loads(raw)
     except json.JSONDecodeError as exc:

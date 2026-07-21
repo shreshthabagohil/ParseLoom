@@ -11,6 +11,11 @@
 </head>
 <body id="top">
 
+  <!-- UI/UX phase: purely visual cursor effects, deliberately loaded as
+       its own file, separate from the app-logic tag further down this
+       page (see static/effects.js's own header comment). -->
+  <script src="{{ url_for('static', filename='effects.js') }}" defer></script>
+
   <!-- ============ Header ============ -->
   <header class="site-header">
     <div class="header-inner">
@@ -24,7 +29,7 @@
         <span class="brand-name">ParseLoom</span>
       </a>
       <nav class="main-nav" aria-label="Primary">
-        <a href="/" class="nav-link active">← Back to results</a>
+        <button type="button" id="back-to-results" class="nav-link active" style="background:none; border:none; cursor:pointer; font: inherit;">← Back to results</button>
       </nav>
     </div>
   </header>
@@ -50,11 +55,13 @@
   <script>
     // This page is deliberately stateless server-side, same as the rest
     // of the app -- it reads the exact same JSON /api/run already
-    // returned, out of sessionStorage (set by index.html right after a
+    // returned, out of localStorage (set by index.html right after a
     // successful run), and picks out the one candidate matching ?file=.
-    // Same-origin tabs opened via a plain target="_blank" link (no
-    // rel="noopener") get a clone of the opener's sessionStorage, so no
-    // second network request is needed here.
+    // localStorage is shared across all same-origin tabs unconditionally
+    // (unlike sessionStorage, whose "clone into a new tab" behavior isn't
+    // reliable across browsers -- notably Safari), so no second network
+    // request is needed here, and "Back to results" navigating this tab
+    // to "/" will also restore the same run there.
     const container = document.getElementById('candidate-container');
 
     function renderSkillMatchList(matches) {
@@ -66,6 +73,22 @@
         return `<li class="skill-match-item skill-match-${cls}"><span class="skill-match-name">${m.skill}</span><span class="skill-match-tag">${label}</span></li>`;
       }).join('') + '</ul>';
     }
+
+    // "Back to results" was landing on the bare homepage in the same
+    // tab, which looked like results were lost (they weren't -- the
+    // homepage restores them from localStorage, but below the hero
+    // section, out of view). Two real fixes: (1) if this tab was opened
+    // via window.open() (see index.html), window.close() actually works
+    // in most browsers and returns focus to the original results tab
+    // directly, which is what "go back to the tab with the results"
+    // means literally. (2) if close is blocked (tab wasn't script-opened
+    // -- e.g. a bookmarked/direct link to this page), fall back to
+    // navigating this tab to "/#results-container", which both restores
+    // the results AND scrolls straight to them instead of the hero.
+    document.getElementById('back-to-results').addEventListener('click', () => {
+      window.close();
+      setTimeout(() => { window.location.href = '/#results-container'; }, 150);
+    });
 
     function renderNotFound(message) {
       container.innerHTML = `
@@ -99,6 +122,23 @@
       const reasons = (c.reasons || []).map(r => `<li>${r}</li>`).join('');
       const parseNotes = (d.parse_notes || []).map(n => `<li>${n}</li>`).join('') || '<li>None.</li>';
 
+      // Full worked formula, not just the final number -- built from the
+      // exact same values score_candidate() used (see app.py, imports
+      // scorer.py's own helper functions rather than re-implementing
+      // them), so this can be hand-checked against the score above and
+      // will always match. Answers "is this score actually correct?"
+      // by showing the arithmetic instead of asking for trust.
+      const b = d.score_breakdown;
+      const scoreBreakdownHtml = b ? `
+        <h4 class="detail-heading">Score breakdown (verify by hand)</h4>
+        <p class="detail-row"><span class="detail-label">Required skills avg</span>${b.required_avg} × 70 = ${Math.round(b.required_avg * 70 * 10) / 10}</p>
+        <p class="detail-row"><span class="detail-label">Preferred skills avg</span>${b.preferred_avg} × 30 = ${Math.round(b.preferred_avg * 30 * 10) / 10}</p>
+        <p class="detail-row"><span class="detail-label">Skill subscore</span>${b.skill_subscore} <span style="color:var(--muted);">(required + preferred above)</span></p>
+        <p class="detail-row"><span class="detail-label">Signal-conflict adjustment</span>${b.signal_conflict_delta >= 0 ? '+' : ''}${b.signal_conflict_delta}${b.signal_conflict_notes && b.signal_conflict_notes.length ? ' — ' + b.signal_conflict_notes.join(' ') : ' (none triggered)'}</p>
+        <p class="detail-row"><span class="detail-label">Completeness fraction</span>${b.completeness_fraction} <span style="color:var(--muted);">(name/CGPA/skills/projects present)</span></p>
+        <p class="detail-row"><span class="detail-label">Final formula</span>(${b.skill_subscore} ${b.signal_conflict_delta >= 0 ? '+' : '−'} ${Math.abs(b.signal_conflict_delta)}) × (0.5 + 0.5 × ${b.completeness_fraction}) = <strong>${c.score}</strong></p>
+      ` : '';
+
       container.innerHTML = `
         <section class="hero" style="text-align:left; padding: 48px 0 24px;">
           <h1 class="hero-title" style="font-size:36px;">${c.name || 'Name not extracted'}</h1>
@@ -110,9 +150,12 @@
             <span class="badge badge-${(c.confidence||'').toLowerCase()}">Confidence: ${c.confidence}</span>
             <span class="badge badge-${(c.parse_quality||'').toLowerCase()}">Parse: ${c.parse_quality}</span>
             <span class="badge badge-high" style="font-size:14px;">Score: ${c.score ?? '—'}</span>
+            ${d.llm_call_failed ? '<span class="badge badge-llm-failed" data-testid="llm-failure-badge">AI extraction failed (provider error)</span>' : ''}
           </div>
+          ${d.llm_call_failed ? `<p class="detail-row" data-testid="llm-failure-reason"><span class="detail-label">Failure reason</span>${d.llm_failure_reason || 'Unknown provider error'}</p>` : ''}
           <h4 class="detail-heading">Why this score (top reasons)</h4>
           <ul class="detail-list">${reasons}</ul>
+          ${scoreBreakdownHtml}
         </section>
 
         <div class="detail-grid">
@@ -140,21 +183,65 @@
         </div>`;
     }
 
-    const params = new URLSearchParams(window.location.search);
-    const file = params.get('file');
-    const saved = sessionStorage.getItem('parseloom_last_run');
+    // Milestone 5.5: this page can now load its data two ways --
+    // (a) the original way, unchanged: read localStorage['parseloom_last_run']
+    //     set by index.html in the same browser, no network request needed.
+    //     This is what the existing "View full details" button (opened via
+    //     window.open()) still uses, and "Back to results" above still
+    //     assumes this same-tab relationship for window.close() to work.
+    // (b) new: a real, shareable link -- ?job_id=<id> (a still-in-memory
+    //     live job) or ?run_id=<id>&client_id=<id> (a persisted historical
+    //     run) -- fetched from the server, so the link genuinely works for
+    //     anyone who opens it, in any browser, not just the tab that ran
+    //     the batch. This is what src/output/xlsx_export.py's "Details
+    //     Link" column now points at.
+    // Route (b) is checked first specifically because a shared link is
+    // meaningless if a stale localStorage value from some earlier run in
+    // the same browser silently wins instead -- an explicit id in the URL
+    // always means "fetch exactly this," never "whatever's cached."
+    async function loadPayload(params) {
+      const jobId = params.get('job_id');
+      const runId = params.get('run_id');
+      const clientId = params.get('client_id');
 
-    if (!file) {
-      renderNotFound('No candidate specified.');
-    } else if (!saved) {
-      renderNotFound('No run data available in this tab.');
-    } else {
-      try {
-        render(JSON.parse(saved), file);
-      } catch (err) {
-        renderNotFound('Could not read the last run\'s data.');
+      if (jobId) {
+        const resp = await fetch(`/api/run/${encodeURIComponent(jobId)}/result`);
+        if (!resp.ok) {
+          const data = await resp.json().catch(() => ({}));
+          throw new Error(data.error || 'This link has expired or the run could not be found.');
+        }
+        return resp.json();
       }
+
+      if (runId && clientId) {
+        const resp = await fetch(`/api/runs/${encodeURIComponent(runId)}?client_id=${encodeURIComponent(clientId)}`);
+        if (!resp.ok) {
+          const data = await resp.json().catch(() => ({}));
+          throw new Error(data.error || 'This link could not be found.');
+        }
+        return resp.json();
+      }
+
+      // Fallback: the original same-tab flow, unchanged.
+      const saved = localStorage.getItem('parseloom_last_run');
+      if (!saved) throw new Error('No run data available in this tab.');
+      return JSON.parse(saved);
     }
+
+    (async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const file = params.get('file');
+      if (!file) {
+        renderNotFound('No candidate specified.');
+        return;
+      }
+      try {
+        const payload = await loadPayload(params);
+        render(payload, file);
+      } catch (err) {
+        renderNotFound(err.message || 'Could not load this candidate\'s data.');
+      }
+    })();
   </script>
 
 </body>
